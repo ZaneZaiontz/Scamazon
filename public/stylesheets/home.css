@@ -1,6 +1,6 @@
 body {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://c.tenor.com/OS-8lY35MBwAAAAC/emetselch.gif");
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://c.tenor.com/OS-8lY35MBwAAAAC/emetselch.gif"); */
     background-size: cover;
     background-position: center;
     text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);

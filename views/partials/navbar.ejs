@@ -1,41 +1,87 @@
 <link rel="stylesheet" href="stylesheets/navbar.css">
 
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid nav_color">
-        <a class="navbar-brand" href="/">
-            <img class="navbar-brand" src="images/white_logo.png" alt="HomePage" width="125" height="50">
-        </a>
-        <button class="navbar-toggler border" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar navbar-expand-lg" id="nav_top">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/products">Products</a>
-                <a class="nav-link" href="/products/new">New Product</a>
-            </div>
-            <div class="container d-flex">
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="x" placeholder="Search">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="/login">Login</a>
-            </div>
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <img class="navbar-brand" src="images/white_logo.png" alt="HomePage" width="125" height="50" class="d-inline-block align-text-top">
+            </a>
         </div>
+        <!-- Collapsible wrapper -->
+        <form class="mx-2 my-auto d-inline w-100">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="search_button">Search</button>
+                </span>
+            </div>
+        </form>
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Team</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Projects</a>
+            </li>
+        </ul>
+        <!-- Left links -->
+
+        <!-- Right elements -->
+        <div class="d-flex">
+            <!-- profile -->
+            <div class="dropdown">
+                <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    <img src="/images/login.png" height="50" alt="" />
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                    <li>
+                        <a class="dropdown-item" href="#">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Cart -->
+            <a class="image" href="#">
+                <img src="/images/cart2.png" height="50" alt="">
+            </a>
+        </div>
+        <!-- Right elements -->
     </div>
+    <!-- Container wrapper -->
 </nav>
 
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<!-- <nav class="navbar sticky-top navbar-expand-lg nav_color">
     <div class="container-fluid nav_color">
 
     </div>
-</nav>
+</nav> -->
+
+<!-- <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form> -->
+
+<!-- <div class="input-group">
+    <input type="text" class="form-control" name="x" placeholder="Search">
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+    </span>
+</div> -->
