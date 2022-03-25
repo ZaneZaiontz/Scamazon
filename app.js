@@ -48,7 +48,7 @@ const sessionConfig = {
 		httpOnly: true,
 		expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
 		maxAge: 1000 * 60 * 60 * 24 * 7
-	}
+	},
 };
 
 app.use(session(sessionConfig));
@@ -73,9 +73,22 @@ app.use('/', userRoutes);
 app.use('/products', productRoutes);
 
 /* #### BEGIN ROUTE DEFINITIONS #### */
+
 //home page route
 app.get('/', (req, res) => {
 	res.render('home');
+});
+
+app.post("/login", passport.authenticate("local", {
+	failureRedirect: "/login" }),
+	(req, res) => {
+		res.redirect("profile");
+	}
+);
+
+app.get("/logout", (req, res) => {
+	req.logout();
+	res.redirect('/');
 });
 /* #### END ROUTE DEFINITIONS #### */
 
