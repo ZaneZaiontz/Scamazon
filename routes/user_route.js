@@ -5,7 +5,11 @@ const User = require('../models/user_model');
 
 //register route: Gets register form
 router.get('/register', (req, res) => {
-	res.render('users/register');
+    res.render('users/register');
+});
+
+router.get('/profile', (req, res) => {
+    res.render('profile/profile');
 });
 
 //post for register route
@@ -19,12 +23,12 @@ router.get('/register', (req, res) => {
 
 //login route: Gets login form
 router.get('/login', (req, res) => {
-	res.render('users/login');
+    res.render('users/login');
 });
 
 //post for login route
 router.post('/login', (req, res) => {
-	res.flash('success', 'Login successful.');
-	res.redirect('/products');
+    res.flash('success', 'Login successful.');
+    res.redirect('/products');
 });
 module.exports = router;

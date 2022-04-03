@@ -2,86 +2,51 @@
 
 <nav class="navbar navbar-expand-lg" id="nav_top">
     <!-- Container wrapper -->
-    <div class="container-fluid">
+    <div class="container-fluid px-3">
         <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
-    </button>
+    </button> -->
 
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Navbar brand -->
-            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+            <a class="navbar-brand mt-2 mt-lg-0" href="/">
                 <img class="navbar-brand" src="images/white_logo.png" alt="HomePage" width="125" height="50" class="d-inline-block align-text-top">
             </a>
         </div>
         <!-- Collapsible wrapper -->
         <form class="mx-2 my-auto d-inline w-100">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" placeholder="Search" id="testing">
                 <span class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button" id="search_button">Search</button>
                 </span>
             </div>
+
         </form>
-        <!-- Left links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Right of search -->
+        <ul class="navbar-nav me-4 mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="#">Dashboard</a>
+                <a class="nav-link" href="#">Button1</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Team</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Projects</a>
+                <a class="nav-link" href="#">Button2</a>
             </li>
         </ul>
-        <!-- Left links -->
 
-        <!-- Right elements -->
-        <div class="d-flex">
-            <!-- profile -->
-            <div class="dropdown">
-                <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                    <img src="/images/login.png" height="50" alt="" />
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                    <li>
-                        <a class="dropdown-item" href="#">My profile</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Settings</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Logout</a>
-                    </li>
-                </ul>
-            </div>
+        <!-- Below needs to be SVG, not IMG -->
+        <a class="me-4" href="/profile" role="button">
+            <img src="/images/loginNew.svg" height="40" alt="" /> profile
+        </a>
+        <a class="me-4" href="/products">
+            <img src="/images/profileNew.svg" height="40" alt=""> cart
+        </a>
 
-            <!-- Cart -->
-            <a class="image" href="#">
-                <img src="/images/cart2.png" height="50" alt="">
-            </a>
-        </div>
-        <!-- Right elements -->
     </div>
-    <!-- Container wrapper -->
 </nav>
-
-<!-- <nav class="navbar sticky-top navbar-expand-lg nav_color">
-    <div class="container-fluid nav_color">
+<nav class="navbar navbar-expand-lg" id="nav_bottom">
+    <div class="container-fluid">
 
     </div>
-</nav> -->
-
-<!-- <form class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-</form> -->
-
-<!-- <div class="input-group">
-    <input type="text" class="form-control" name="x" placeholder="Search">
-    <span class="input-group-btn">
-        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-    </span>
-</div> -->
+</nav>

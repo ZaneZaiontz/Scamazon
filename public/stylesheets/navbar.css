@@ -4,6 +4,20 @@
     border-bottom: 4px solid rgba(153, 51, 255, 1);
 }
 
+#nav_bottom {
+    background: rgba(34, 0, 63, 1);
+    color: rgb(255, 184, 184);
+    padding-bottom: 20px;
+}
+
 #search_button {
     color: rgba(153, 51, 255, 1);
+}
+
+#testing {
+    border-radius: 33px;
+}
+
+#search-bg {
+    color: aqua;
 }
