@@ -3,6 +3,7 @@
 	'use strict';
 	// Fetch all the forms we want to apply custom Bootstrap validation styles to
 	const forms = document.querySelectorAll('.validated-form');
+	//document.getElementById('discount').val
 	// Loop over them and prevent submission
 	Array.prototype.slice.call(forms).forEach(function(form) {
 		form.addEventListener(

@@ -18,7 +18,8 @@ const userRoutes = require('./routes/user_route');
 const ExpressError = require('./utils/ExpressError');
 
 /* Connect to mongDB */
-mongoose.connect('mongodb://localhost:27017/scamazon-demo', {
+/* 3/29 - changed DB name to ScamazonDB */
+mongoose.connect('mongodb://localhost:27017/scamazonDB', {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 });
@@ -61,8 +62,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//define middleware for flash
+//define middleware for global use
 app.use((req, res, next) => {
+	/* 3/30 - added currentUser for global use */
+	res.locals.currentUser = req.user;
 	res.locals.success = req.flash('success');
 	res.locals.error = req.flash('error');
 	next();
@@ -75,6 +78,7 @@ app.use('/products', productRoutes);
 /* #### BEGIN ROUTE DEFINITIONS #### */
 //home page route
 app.get('/', (req, res) => {
+	//res.render('index_test');
 	res.render('home');
 });
 /* #### END ROUTE DEFINITIONS #### */

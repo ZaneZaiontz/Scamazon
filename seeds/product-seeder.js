@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Product = require('../models/product');
+const Product = require('../models/product_model');
 
 var products = [
 	new Product({
@@ -10,7 +10,8 @@ var products = [
 		discount: 0,
 		quantity: 100,
 		description:
-			'Celebrating 45 years on the track and on the street, Nike Cortez refreshes the iconic runner for the next generation. Durable synthetic leather is overlaid at the toe and heel for support and one-of-a-kind style. '
+			'Celebrating 45 years on the track and on the street, Nike Cortez refreshes the iconic runner for the next generation. Durable synthetic leather is overlaid at the toe and heel for support and one-of-a-kind style. ',
+		author: '62433ac7e944c4d024d7670d'
 	}),
 	new Product({
 		title: 'iPhone 7',
@@ -18,7 +19,8 @@ var products = [
 		price: 650,
 		discount: 0,
 		quantity: 20,
-		description: 'New iPhone 7'
+		description: 'New iPhone 7',
+		author: '62433ac7e944c4d024d7670d'
 	}),
 	new Product({
 		title: 'iMac',
@@ -28,7 +30,8 @@ var products = [
 		discount: 0,
 		quantity: 100,
 		description:
-			"iMac — beautiful, intuitive all-in-one desktops with incredible processors, a Retina display, and the world's most advanced desktop operating system."
+			"iMac — beautiful, intuitive all-in-one desktops with incredible processors, a Retina display, and the world's most advanced desktop operating system.",
+		author: '62433ac7e944c4d024d7670d'
 	}),
 	new Product({
 		title: 'Sunglasses',
@@ -37,7 +40,8 @@ var products = [
 		price: 45,
 		discount: 0,
 		quantity: 50,
-		description: 'Sunglasses to wear when its sunny when the sun is shining'
+		description: 'Sunglasses to wear when its sunny when the sun is shining',
+		author: '62433ac7e944c4d024d7670d'
 	}),
 	new Product({
 		title: 'Minolta srT101 camera',
@@ -46,12 +50,14 @@ var products = [
 		price: 220,
 		discount: 0,
 		quantity: 20,
-		description: 'Vintage Minolta srT101 camera with black and white negative film'
+		description: 'Vintage Minolta srT101 camera with black and white negative film',
+		author: '62433ac7e944c4d024d7670d'
 	})
 ];
 
 /* Connect to mongDB */
-mongoose.connect('mongodb://localhost:27017/scamazon-demo', {
+/* 3/29 - changed DB name to ScamazonDB */
+mongoose.connect('mongodb://localhost:27017/scamazonDB', {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 });

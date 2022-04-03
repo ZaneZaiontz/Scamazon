@@ -10,13 +10,24 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">$<%=product.price%></li>
               <li class="list-group-item"><%=product.quantity%> in stock</li>
+              <!-- 3/29 - Display the author of the product -->
+              <li class="list-group-item text-muted">Sold by 
+                <% if (product.author.isAdmin) { %> 
+                  Scamazon
+                <% } else { %> 
+                  <%=product.author.username%>      
+                <% } %> 
+              </li>
             </ul>
+            <!-- 3/30 - will show/hide buttons if there is a user logged in and the user is the author or an admin -->
+            <% if(currentUser && product.author.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %> 
             <div class="card-body">
                 <a class="card-link btn btn-info" href="/products/<%= product._id %>/edit">Edit</a>
                 <form class="d-inline" action="/products/<%= product._id %>?_method=DELETE" method="POST">
                     <button class="btn btn-danger">Delete</button>
                 </form>
             </div>
+            <% } %> 
             <div class="card-footer text-muted">
                 <a href="/products">All Products</a>
               </div>

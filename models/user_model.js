@@ -3,7 +3,12 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 //define user schema
-const userSchema = new Schema({});
+const userSchema = new Schema({
+	isAdmin: {
+		type: Boolean,
+		default: false
+	}
+});
 
 //Passport-Local Mongoose will add a username, hash and salt field to store the username, the hashed password and the salt value.
 userSchema.plugin(passportLocalMongoose);

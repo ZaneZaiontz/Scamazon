@@ -34,7 +34,11 @@
             </div> <!-- end image -->
             <div class="mb-3">
                 <label class="form-label" for="discount">Discount</label>
-                <input class="form-control" type="text" id="discount" name="product[discount]">
+                <div class="input-group">           
+                    <input class="form-control" type="number" value="0" id="discount" placeholder="0.00" aria-label="discount"
+                        aria-describedby="discount-label" name="product[discount]">
+                    <span class="input-group-text" id="discount-label">%</span>
+                </div> 
             </div> <!-- end discount -->
             <div class="mb-3">
                 <button class="btn btn-success">Add Product</button>
@@ -43,5 +47,3 @@
         <a href="/products">All Products</a>
     </div>  
 </div>
-    
-    
