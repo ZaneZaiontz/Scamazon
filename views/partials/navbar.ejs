@@ -1,26 +1,46 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Scamazon</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/products">Products</a>
-                <a class="nav-link" href="/products/new">New Product</a>
-            </div>
-            <div class="navbar-nav ms-auto">
-                <!-- 3/30 - added logout to navbar and condition to hide/show links if a user is logged in -->
-                <% if(!currentUser) { %> 
-                <a class="nav-link" href="/login">Login</a>
-                <a class="nav-link" href="/register">Register</a>
-                <% } else { %>      
-                <a class="nav-link" href="/profile">Profile</a>
-                <a class="nav-link" href="/logout">Logout</a>
-                <% } %> 
-            </div>
+<link rel="stylesheet" href="stylesheets/navbar.css">
+
+<nav class="navbar navbar-expand-lg" id="nav_top">
+    <!-- Container wrapper -->
+    <div class="container-fluid px-3">
+        <!-- Toggle button -->
+        <!-- <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button> -->
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" href="/">
+                <img class="navbar-brand" src="images/white_logo.png" alt="HomePage" width="125" height="50" class="d-inline-block align-text-top">
+            </a>
         </div>
+        <!-- Collapsible wrapper -->
+        <form class="mx-2 my-auto d-inline w-100">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" id="cust-search-bar">
+                <span class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="search_button">Search</button>
+                </span>
+            </div>
+
+        </form>
+        <div class="navbar-nav ms-auto">
+            <% if(!currentUser) { %>
+                <a class="nav-link me-2" href="/login"><img src="/images/loginFinal.svg" height="45" alt=""></a>
+                <% } else { %>
+                    <a class="nav-link me-2" href="/profile"><img src="/images/finalProfile.svg" height="45" alt=""></a>
+                    <% } %>
+        </div>
+        <!-- Below needs to be SVG, not IMG -->
+        <a class="nav-link me-2" href="/products">
+            <img src="/images/finalCart.svg" height="45" alt="">
+        </a>
+
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg" id="nav_bottom">
+    <div class="container-fluid">
+
     </div>
 </nav>
