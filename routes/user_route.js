@@ -10,8 +10,12 @@ const passport = require('passport');
 
 //register route: Gets register form
 router.get('/register', (req, res) => {
-	res.render('users/register');
+    res.render('users/register');
 });
+
+// router.get('/profile', (req, res) => { Deprecated
+//     res.render('profile/profile');
+// });
 
 //handle register logic
 router.post(
@@ -51,7 +55,7 @@ router.post(
 
 //login route: Gets login form
 router.get('/login', (req, res) => {
-	res.render('users/login');
+    res.render('users/login');
 });
 
 //post for login route
@@ -78,7 +82,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-	res.render('users/profile');
+    res.render('users/profile');
 });
 
 module.exports = router;
