@@ -82,7 +82,33 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-    res.render('users/profile');
+	if (req.user.isAdmin === false)
+    	res.render('users/profile');
+	else
+		res.redirect('/admin_tools');
+});
+
+// Caleb: GET request to render the manage_profile page
+router.get('/manage_profile', (req, res) => {
+	res.render('users/manage_profile');
+});
+// Caleb: GET request to render the user_products page
+router.get('/user_products', (req, res) => {
+	res.render('users/user_products');
+});
+// Caleb: GET request to render the user_orders page
+router.get('/user_orders', (req, res) => {
+	res.render('users/user_orders');
+});
+// Caleb: GET request to render the admin_tools page
+router.get('/admin_tools', (req, res) => {
+	if (req.user.isAdmin === true)
+		res.render('users/admin_tools');
+	else {
+		req.flash('error', 'Only admins can view this page');
+		res.redirect('/profile');
+		return;
+	}
 });
 
 module.exports = router;
