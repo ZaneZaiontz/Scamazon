@@ -1,13 +1,7 @@
 <link rel="stylesheet" href="../stylesheets/navbar.css" />
-
 <nav class="navbar navbar-expand-lg" id="nav_top">
     <!-- Container wrapper -->
     <div class="container-fluid px-3">
-        <!-- Toggle button -->
-        <!-- <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button> -->
-
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Navbar brand -->
@@ -25,18 +19,25 @@
             </div>
 
         </form>
+        <!-- Below needs to be SVG, not IMG -->
+        <a class="nav-link me-2" href="/products">
+            products
+        </a>
         <div class="navbar-nav ms-auto">
             <% if(!currentUser) { %>
                 <a class="nav-link me-2" href="/login"><img src="/images/loginFinal.svg" height="45" alt=""></a>
                 <% } else { %>
                     <a class="nav-link me-2" href="/profile"><img src="/images/finalProfile.svg" height="45" alt=""></a>
                     <% } %>
+                        <a class="nav-link" href="/cart">
+                            <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                            <span class="badge">
+                        <% if(session.cart) {%>  
+                            <%= session.cart.totalQty %> 
+                        <% } %> 
+                    </span>
+                        </a>
         </div>
-        <!-- Below needs to be SVG, not IMG -->
-        <a class="nav-link me-2" href="/products">
-            <img src="/images/finalCart.svg" height="45" alt="">
-        </a>
-
     </div>
 </nav>
 <nav class="navbar navbar-expand-lg" id="nav_bottom">
