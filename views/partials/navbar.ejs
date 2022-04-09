@@ -20,6 +20,14 @@
                 <a class="nav-link" href="/profile">Profile</a>
                 <a class="nav-link" href="/logout">Logout</a>
                 <% } %> 
+                <a class="nav-link" href="/cart">
+                    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                    <span class="badge">
+                        <% if(session.cart) {%>  
+                            <%= session.cart.totalQty %> 
+                        <% } %> 
+                    </span>
+                </a>
             </div>
         </div>
     </div>

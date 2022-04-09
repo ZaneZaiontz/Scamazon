@@ -1,0 +1,99 @@
+<% layout('layouts/boilerplate') %> 
+<link rel="stylesheet" href="/stylesheets/cart.css">
+<% if(products) { %>
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-9">
+                <div class="shopping-cart">
+                    <!-- Title -->
+                    <div class="title">
+                        <span>Shopping Cart</span>
+                    </div>
+                    <% for(let product of products) { %>
+                        <div class="row" id="cart-items">
+                            <!-- Delete button -->
+                            <div class="col-1 align-self-center">
+                                <div class="delete-btn">
+                                    <a href="/cart/remove-item/<%=product.item._id %>">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Image -->
+                            <div class="col-4">
+                                <img class="img-fluid" src="<%= product.item.image %>" alt="" />
+                            </div>
+                            <!-- Description -->
+                            <div class="col-4">
+                                <!-- Title -->
+                                <p class="product-title">
+                                    <%= product.item.title %>
+                                </p>
+                                <span>$<%= product.item.price %> </span>
+                                <br>
+                                <span class="text-muted">Sold By 
+                                    <% if (product.item.author.isAdmin) { %>
+                                        Scamazon
+                                    <% } else { %>
+                                        <%=product.item.author.username%>      
+                                    <% } %> 
+                                </span>
+                            </div>
+                            <!-- Inc/dec quantity -->
+                            <div class="col-2 align-self-center">
+                                <a class="qty-btn" href="/cart/dec-qty/<%=product.item._id %> ">
+                                    <i class="fa-solid fa-minus"></i>
+                                </a>
+                                <span id="qty-input"><%=product.qty%></span>
+                                <a class="qty-btn" href="/cart/inc-qty/<%=product.item._id %> ">
+                                    <i class="fa-solid fa-plus"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="col-1 align-self-center">
+                                <span class="price">$<%= product.price %></span>
+                            </div>
+                        </div>
+                    <% } %> <!-- end loop -->
+                </div> <!-- end shopping-cart -->
+            </div> <!-- end col -->
+            <div class="col-3">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title checkout-header">Summary</h5>
+                        <div class="charges">
+                            <div>
+                                <p>Item(s):</p>
+                                <p>Existing:</p>
+                                <p>Breathing:</p>
+                                <p>Using Scamazon:</p>
+                            </div>
+                            <div>
+                                <p>$<%= itemsPrice %> </p>
+                                <p>$50</p>
+                                <p>$25</p>
+                                <p>$100</p>
+                            </div>
+                        </div>
+                        <form class="row g-1" action="#">
+                            <div class="col-9">
+                                <label for="promo-code" class="visually-hidden">Apply promo code</label>
+                                <input class="form-control" type="text" id="promo-code" name="promo-code" placeholder="Apply promo code">
+                            </div>
+                            <div class="col-3">
+                                <button type="submit" class="btn btn-primary">Apply</button>
+                            </div>
+                        </form>
+                        <div class="mt-2 d-grid gap-1">
+                            <h4>Total: $<%= totalPrice %></h4>
+                            <!-- <button class="btn btn-warning" type="button">Checkout</button> -->
+                            <a href="/cart/checkout" class="btn btn-warning">Checkout</a>
+                        </div>
+                    </div>       
+                </div>
+            </div> <!-- end col -->
+        </div>
+    </section>
+<% } else { %> 
+    <h1>No products</h1>
+<% } %> 

@@ -69,4 +69,14 @@ router.get('/profile', (req, res) => {
 	res.render('users/profile');
 });
 
+router.get(
+	'/manage_profile/:id',
+	catchAsync(async (req, res) => {
+		const { id } = req.params;
+		const user = await User.findById(id);
+
+		res.render('users/manage_profile', { user });
+	})
+);
+
 module.exports = router;
