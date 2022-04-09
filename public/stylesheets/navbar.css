@@ -1,0 +1,23 @@
+#nav_top {
+    background: rgba(34, 0, 63, 1);
+    color: rgb(255, 184, 184);
+    border-bottom: 4px solid rgba(153, 51, 255, 1);
+}
+
+#nav_bottom {
+    background: rgba(34, 0, 63, 1);
+    color: rgb(255, 184, 184);
+    padding-bottom: 20px;
+}
+
+#search_button {
+    color: rgba(153, 51, 255, 1);
+}
+
+#cust-search-bar {
+    border-radius: 2px;
+}
+
+#search-bg {
+    color: aqua;
+}

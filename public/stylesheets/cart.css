@@ -1,0 +1,128 @@
+.shop-section {
+    background-color: white;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shopping-cart {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px 25px;
+    display: flex;
+    margin-right: 5em;
+    flex-direction: column;
+    text-transform: uppercase;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+    
+}
+
+.checkout-header {
+  display: flex;
+  justify-content: center;
+}
+
+.charges {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+.charges p {
+  margin-bottom: 2px;
+}
+
+form input {
+  text-transform: uppercase;
+}
+::placeholder {
+  text-transform: none;
+}
+
+.title {
+  height: 60px;
+  border-bottom: 1px solid #E1E8EE;
+  padding: 20px 30px;
+  color: #5E6977;
+  font-size: 18px;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+}
+
+#cart-items, form  {
+  border-bottom: 1px solid #E1E8EE;
+  padding: 10px 0 10px 0;
+}
+
+#qty-input {
+  border: none;
+  text-align: center;
+  width: 20px;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 400;
+  padding: 0 4px;
+}
+.delete-btn {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.delete-btn i {
+  color: #86939E;
+}
+.delete-btn:hover, .delete-btn:focus{
+  background-color: #e74c3c;
+  border-radius: 6px;
+  transition: background-color 200ms ease-in-out;
+}
+.delete-btn:hover i {
+  color: #e1f1ff;
+}
+.deete-btn i {
+  margin-left: 10px;
+  padding-top: 5px;
+}
+.plus-btn, .minus-btn {
+  color: #43484D;
+  background-color: #E1E8EE; 
+  display: inline-block;
+  padding: 5px 15px;
+  text-decoration: none;
+  margin: 25px 0;
+  transition: background-color 200ms ease-in-out;
+  border-radius: 6px;
+}
+
+.qty-btn {
+  color: #43484D;
+  background-color: #E1E8EE; 
+  display: inline-block;
+  padding: 5px 15px;
+  text-decoration: none;
+  margin: 25px 0;
+  transition: background-color 200ms ease-in-out;
+  border-radius: 6px;
+}
+.qty-btn:hover {
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.20);
+}
+
+.qty-btn:active {
+  transform: translateY(2px);
+}
+/* padding: top right bottom left */
+.product-title {
+  padding: 35px 0 0 0;
+  font-weight: bold;
+  
+}
+.price {
+  font-size: 18px;
+  color: #43484D;
+  font-weight: bold;
+}

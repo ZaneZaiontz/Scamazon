@@ -10,6 +10,10 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">$<%=product.price%></li>
               <li class="list-group-item"><%=product.quantity%> in stock</li>
+              <!-- added 'add to cart' button -->
+              <li class="list-group-item">
+                <a class="btn btn-success" href="/cart/add-to-cart/<%= product._id %>">Add to cart</a> 
+              </li>
               <!-- 3/29 - Display the author of the product -->
               <li class="list-group-item text-muted">Sold by 
                 <% if (product.author.isAdmin) { %> 

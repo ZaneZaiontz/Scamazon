@@ -4,7 +4,6 @@ const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 /* 3/30 - added isLoggedIn middleware */
 const { isLoggedIn, isAuthor, validateProduct } = require('../middleware');
-
 const Product = require('../models/product_model');
 
 //products page route: will display all products
@@ -52,7 +51,7 @@ router.get(
 	})
 );
 
-/* add to cart route */
+/* 4/3 - shopping cart route */
 
 //edit product route: page to edit a product
 /* 3/30 - added isLoggedIn and isAuthor middleware to protect editing a product */

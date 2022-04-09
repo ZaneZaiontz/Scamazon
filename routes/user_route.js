@@ -10,6 +10,10 @@ router.get('/register', (req, res) => {
 	res.render('users/register');
 });
 
+// router.get('/profile', (req, res) => { Deprecated
+//     res.render('profile/profile');
+// });
+
 //handle register logic
 router.post(
 	'/register',
