@@ -13,6 +13,8 @@ const User = require('./models/user_model');
 /* Routes requirements */
 const productRoutes = require('./routes/product_route');
 const userRoutes = require('./routes/user_route');
+// 4/8 - added cart route
+const cartRoutes = require('./routes/cart_route');
 
 /* Error Handler requirements */
 const ExpressError = require('./utils/ExpressError');
@@ -66,6 +68,8 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
 	/* 3/30 - added currentUser for global use */
 	res.locals.currentUser = req.user;
+	/* 4/3 - added session for global use */
+	res.locals.session = req.session;
 	res.locals.success = req.flash('success');
 	res.locals.error = req.flash('error');
 	next();
@@ -74,7 +78,7 @@ app.use((req, res, next) => {
 //define route handlers
 app.use('/', userRoutes);
 app.use('/products', productRoutes);
-
+app.use('/cart', cartRoutes);
 /* #### BEGIN ROUTE DEFINITIONS #### */
 //home page route
 app.get('/', (req, res) => {
