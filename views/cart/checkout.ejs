@@ -1,0 +1,62 @@
+<% layout('layouts/boilerplate') %> 
+<div class="row">
+    <div class="col-9">
+        <div class="container">
+            <div class="contact-title">Contact Info</div>
+            <form class="row g-3">
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">First Name</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label for="inputPassword4" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="inputPassword4">
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label">Street Address</label>
+                  <input type="text" class="form-control mb-2" id="inputAddress" placeholder="1234 Main St">
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="col-md-6">
+                  <label for="inputCity" class="form-label">City</label>
+                  <input type="text" class="form-control" id="inputCity">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">State</label>
+                  <select id="inputState" class="form-select">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label for="inputZip" class="form-label">Zip</label>
+                  <input type="text" class="form-control" id="inputZip">
+                </div>
+                <div class="d-grid gap-2 col-6">
+                    <button class="btn btn-primary" type="submit">Complete Order</button>
+                </div>
+              </form>
+        </div>
+    </div> <!-- end col -->
+    <div class="col-3">
+        <div class="card shadow">
+            <div class="card-body">
+                <h5 class="card-title checkout-header">Order Summary</h5>
+                <div class="charges">
+                    <div>
+                        <p>Item(s):</p>
+                        <p>Existing:</p>
+                        <p>Breathing:</p>
+                        <p>Using Scamazon:</p>
+                    </div>
+                    <div>
+                        <p>$56</p>
+                        <p>$50</p>
+                        <p>$25</p>
+                        <p>$100</p>
+                    </div>
+                </div>
+            </div>       
+        </div>
+    </div> <!-- end col -->
+</div>
