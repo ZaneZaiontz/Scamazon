@@ -1,49 +1,57 @@
 <% layout('layouts/boilerplate') %>
     <section class="main-content">
         <div class="container">
-            <h1 class="text-center">Your Account</h1>
-        </div>
-        <br><br>
-        <div class="container">
+            <h1 class="text-center">
+                <%= currentUser.username %>'s Account</h1>
+            <br><br>
             <!-- Row 1 start -->
+
+            <!-- Zane - notes: I'll change some of the layout here later, going to just get it working for now -->
             <div class="row">
                 <div class="col-sm-6">
-                    <a class="account-card btn" href="#" style="text-align: left;">
-                        <div class="account-card-content">
-                            <h4 class="mb-2 text-muted">Your Orders</h4>
-                            <p>Track, return, or buy things again</p>
-                        </div>
-                        <div class="account-card-icon">
-                            <div class="account-card-icon-circle is-primary">
-                                <i class="fa-solid fa-cart-shopping"></i>
+                    <!-- Caleb: added the following line to make this card a link to user_orders page -->
+                    <a class="nav-link me-2" href="/user_orders">
+                        <div class="account-card">
+                            <div class="account-card-content">
+                                <h4 class="mb-2 text-muted">Your Orders</h4>
+                                <p>Track, return, or buy things again</p>
+                            </div>
+                            <div class="account-card-icon">
+                                <div class="account-card-icon-circle is-primary">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-6">
-                    <a class="account-card btn" href="#" style="text-align: left;">
-                        <div class="account-card-content">
-                            <h4 class="mb-2 text-muted">Your Products</h4>
-                            <p>View and manage your products</p>
-                        </div>
-                        <div class="account-card-icon">
-                            <div class="account-card-icon-circle">
-                                <i class="fa-solid fa-list"></i>
+                    <!-- Caleb: added the following line to make this card a link to user_products page -->
+                    <a class="nav-link me-2" href="/user_products">
+                        <div class="account-card">
+                            <div class="account-card-content">
+                                <h4 class="mb-2 text-muted">Your Products</h4>
+                                <p>View and manage your products</p>
+                            </div>
+                            <div class="account-card-icon">
+                                <div class="account-card-icon-circle">
+                                    <i class="fa-solid fa-list"></i>
+                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-sm-6">
-                    <a class="account-card btn" href="#" style="text-align: left;">
-                        <div class="account-card-content">
-                            <h4 class="mb-2 text-muted">Your Profiles</h4>
-                            <p>Manage your profile</p>
-                        </div>
-                        <div class="account-card-icon">
-                            <div class="account-card-icon-circle">
-                                <i class="fa-solid fa-address-card"></i>
+                    <!-- Caleb: added the following line to make this card a link to a manage_profile page -->
+                    <a class="nav-link me-2" href="/manage_profile">
+                        <div class="account-card">
+                            <div class="account-card-content">
+                                <h4 class="mb-2 text-muted">Your Profiles</h4>
+                                <p>Manage your profile</p>
+                            </div>
+                            <div class="account-card-icon">
+                                <div class="account-card-icon-circle">
+                                    <i class="fa-solid fa-address-card"></i>
+                                </div>
                             </div>
                         </div>
                     </a>
