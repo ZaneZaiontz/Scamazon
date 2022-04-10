@@ -1,0 +1,16 @@
+<% layout('layouts/boilerplate') %>
+
+<p>users can edit their profile info here</p>
+<h4>Your username: <%= user.username %> </h4>
+
+<form action="/manage_profile?_method=PUT" method="POST">
+    <label>Change username</label>
+    <input class="form-control" type="text" id="username" name="user[username]"
+        value="<%=currentUser.username%>" required>
+    <button class="btn btn-info">update</button>
+</form>
+
+<form action="/profile?_method=DELETE" method="POST">
+    <button> delete account </button>
+</form>
+
