@@ -4,6 +4,7 @@ body {
     background-size: cover;
     background-position: center;
     text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    font-family: 'Poppins', sans-serif;
 }
 
 .cover-container {
@@ -16,15 +17,17 @@ body {
     border-color: #333;
 }
 
-.nav-link {
+
+/* .nav-link { Not needed due to navbar.css 
     padding: 0.25rem 0;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.5);
     margin-left: 1rem;
     border-bottom: 0.25rem solid transparent;
-}
+} */
 
-.nav-link:hover {
+
+/* .nav-link:hover {
     color: rgba(255, 255, 255, 0.5);
     border-bottom-color: rgba(255, 255, 255, 0.5);
 }
@@ -32,7 +35,7 @@ body {
 .nav-link.active {
     color: white;
     border-bottom-color: white;
-}
+} */
 
 .btn-secondary,
 .btn-secondary:hover {
