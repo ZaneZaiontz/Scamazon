@@ -9,6 +9,13 @@ body {
     padding-bottom: 100px;
 }
 
+.btn-login,
+.btn-login:hover {
+    color: #fff;
+    background-color: rgba(153, 51, 255, 1) !important;
+    border-color: rgba(153, 51, 255, 1) !important;
+}
+
 .account-card {
     background: #fff;
     padding: 25px;

@@ -5,7 +5,7 @@
 }
 
 .nav-link {
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
 }
 
 .circle {
@@ -37,5 +37,5 @@
 }
 
 #search-bg {
-    color: rgb(68, 168, 168);
+    color: rgb(255, 255, 255);
 }
