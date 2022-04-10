@@ -107,8 +107,8 @@ router.put('/manage_profile', isLoggedIn, catchAsync(async (req, res) => {
 	//const user = await User.findByIdAndUpdate(id, { ...req.body.user});
 	const user = await User.findByIdAndUpdate(req.user._id, { ...req.body.user });
 
-	req.flash('success', 'Successfully updated user information!');
-	res.redirect('/profile');
+	req.flash('success', 'Successfully updated user information! Log back in view changes.');
+	res.redirect('/');
 }));
 
 
