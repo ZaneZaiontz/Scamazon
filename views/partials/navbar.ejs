@@ -1,21 +1,12 @@
-<link rel="stylesheet" href="stylesheets/navbar.css">
-
+<link rel="stylesheet" href="/stylesheets/navbar.css" />
 <nav class="navbar navbar-expand-lg" id="nav_top">
-    <!-- Container wrapper -->
     <div class="container-fluid px-3">
-        <!-- Toggle button -->
-        <!-- <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button> -->
-
-        <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Navbar brand -->
             <a class="navbar-brand mt-2 mt-lg-0" href="/">
-                <img class="navbar-brand" src="images/white_logo.png" alt="HomePage" width="125" height="50" class="d-inline-block align-text-top">
+                <img class="navbar-brand" src="/images/white_logo.png" alt="HomePage" width="125" height="50" class="d-inline-block align-text-top">
             </a>
         </div>
-        <!-- Collapsible wrapper -->
+
         <form class="mx-2 my-auto d-inline w-100">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" id="cust-search-bar">
@@ -25,27 +16,26 @@
             </div>
 
         </form>
+        <a class="nav-link me-2" href="/products">
+            products
+        </a>
         <div class="navbar-nav ms-auto">
             <% if(!currentUser) { %>
                 <a class="nav-link me-2" href="/login"><img src="/images/loginFinal.svg" height="45" alt=""></a>
-            <% } else { %>
-                <% if (currentUser.isAdmin) { %>
-                    <!-- might want to change the picture to say 'admin' instead of profile?? -->
-                    <a class="nav-link me-2" href="/profile"><img src="/images/finalProfile.svg" height="45" alt=""> </a>
                 <% } else { %>
                     <a class="nav-link me-2" href="/profile"><img src="/images/finalProfile.svg" height="45" alt=""></a>
-                <% } %>
-            <% } %>
+                    <% } %>
+                        <a class="nav-link" href="/cart">
+                            <i class="fa-solid fa-cart-shopping fa-2xl" aria-hidden="true"></i>
+                            <span class="badge">
+                        <% if(session.cart) {%>  
+                            <span class="circle"><%= session.cart.totalQty %> </span>
+                            <% } %>
+                                </span>
+                        </a>
         </div>
-        <!-- Below needs to be SVG, not IMG -->
-        <a class="nav-link me-2" href="/products">
-            <img src="/images/finalCart.svg" height="45" alt="">
-        </a>
-
     </div>
 </nav>
 <nav class="navbar navbar-expand-lg" id="nav_bottom">
-    <div class="container-fluid">
-
-    </div>
+    <div class="container-fluid"></div>
 </nav>
