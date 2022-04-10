@@ -2,11 +2,12 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user_model');
+const Product = require('../models/product_model');
 /* 3/29 - added the following requirements */
 const catchAsync = require('../utils/catchAsync');
 const passport = require('passport');
 
-
+const { isLoggedIn } = require('../middleware');
 
 //register route: Gets register form
 router.get('/register', (req, res) => {
@@ -82,33 +83,66 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-	if (req.user.isAdmin === false)
-    	res.render('users/profile');
-	else
-		res.redirect('/admin_tools');
+	// if (req.user.isAdmin === false)
+    // 	res.render('users/profile');
+	// else
+	// 	res.redirect('/admin_tools');
+	res.render('users/profile');
 });
 
+
+
 // Caleb: GET request to render the manage_profile page
-router.get('/manage_profile', (req, res) => {
-	res.render('users/manage_profile');
-});
+router.get('/manage_profile', catchAsync(async (req, res) => {
+
+	const { id } = req.params;
+	const user = await User.findById(req.user.id);
+
+	res.render('users/manage_profile', { user });
+}));
+
+router.put('/manage_profile', isLoggedIn, catchAsync(async (req, res) => {
+
+	const { id } = req.params;
+	//const user = await User.findByIdAndUpdate(id, { ...req.body.user});
+	const user = await User.findByIdAndUpdate(req.user._id, { ...req.body.user });
+
+	req.flash('success', 'Successfully updated user information!');
+	res.redirect('/profile');
+}));
+
+
+
 // Caleb: GET request to render the user_products page
-router.get('/user_products', (req, res) => {
-	res.render('users/user_products');
-});
+//user_products page will display each product they sell
+router.get('/user_products', catchAsync(async (req, res) => {
+	const products = await Product.find({author:req.user._id});
+	res.render('users/user_products', { products });
+}));
 // Caleb: GET request to render the user_orders page
 router.get('/user_orders', (req, res) => {
 	res.render('users/user_orders');
 });
 // Caleb: GET request to render the admin_tools page
 router.get('/admin_tools', (req, res) => {
-	if (req.user.isAdmin === true)
-		res.render('users/admin_tools');
-	else {
+	if (req.user.isAdmin === true){
+		User.find({}).exec(function(err, users) {
+			if (err) throw err;
+			res.render('users/admin_tools', {"users":users});
+		})
+		//res.render('users/admin_tools');
+	} else {
 		req.flash('error', 'Only admins can view this page');
 		res.redirect('/profile');
 		return;
 	}
 });
+
+router.delete('/profile', isLoggedIn, catchAsync(async (req, res) => {
+
+	const user = await User.findByIdAndDelete(req.user.id);
+	req.flash('success', 'You deleted your account');
+	res.redirect('/');
+}));
 
 module.exports = router;
