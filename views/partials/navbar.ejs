@@ -16,26 +16,27 @@
             </div>
 
         </form>
-        <a class="nav-link me-2" href="/products">
-            products
-        </a>
         <div class="navbar-nav ms-auto">
             <% if(!currentUser) { %>
                 <a class="nav-link me-2" href="/login"><img src="/images/loginFinal.svg" height="45" alt=""></a>
                 <% } else { %>
-                    <a class="nav-link me-2" href="/profile"><img src="/images/finalProfile.svg" height="45" alt=""></a>
+                    <a class="nav-link me-2 my-3" href="/profile"><img src="/images/finalProfile.svg" height="45" alt=""></a>
                     <% } %>
                         <a class="nav-link" href="/cart">
-                            <i class="fa-solid fa-cart-shopping fa-2xl" aria-hidden="true"></i>
-                            <span class="badge">
-                        <% if(session.cart) {%>  
-                            <span class="circle"><%= session.cart.totalQty %> </span>
-                            <% } %>
-                                </span>
+                            <% if(session.cart) {%>
+                                <i class="fa-solid fa-cart-shopping fa-2xl" aria-hidden="true" style="position: absolute;"> <span class="badge"></span></i>
+                                <span class="circle mx-4"><%= session.cart.totalQty %> </span>
+                                <% } else { %>
+                                    <i class="fa-solid fa-cart-shopping fa-2xl" aria-hidden="true"> <span class="badge"></span></i>
+                                    <% } %>
                         </a>
         </div>
     </div>
 </nav>
 <nav class="navbar navbar-expand-lg" id="nav_bottom">
-    <div class="container-fluid"></div>
+    <div class="container">
+        <a class="nav-link" href="/products" style="padding: 0rem 0rem;">
+            products
+        </a>
+    </div>
 </nav>

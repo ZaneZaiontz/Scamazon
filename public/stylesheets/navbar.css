@@ -1,11 +1,17 @@
 #nav_top {
     background: rgba(34, 0, 63, 1);
     color: rgb(255, 184, 184);
-    border-bottom: 4px solid rgba(153, 51, 255, 1);
 }
 
 .nav-link {
     color: rgb(255, 255, 255) !important;
+}
+
+.navbar {
+    font-family: 'Poppins', sans-serif !important;
+    padding-top: 0rem;
+    height: 75px;
+    /* max-height: 75px; */
 }
 
 .circle {
@@ -23,9 +29,11 @@
 }
 
 #nav_bottom {
+    border-top: 2px solid rgba(153, 51, 255, 1);
     background: rgba(34, 0, 63, 1);
     color: rgb(255, 184, 184);
-    padding-bottom: 20px;
+    padding-bottom: 4px;
+    height: 30px !important;
 }
 
 #search_button {
