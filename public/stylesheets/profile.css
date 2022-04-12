@@ -10,6 +10,10 @@ body {
     padding-bottom: 100px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .account-card {
     background: #fff;
     padding: 25px;

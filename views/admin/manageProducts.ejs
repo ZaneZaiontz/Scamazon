@@ -1,0 +1,26 @@
+<% layout('layouts/boilerplate') %>
+<table class="product-table">
+    <thead>
+        <th>Title</th>
+        <th>Seller</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </thead>
+    <tbody>
+        <% for(let product of products) { %> 
+            <tr>
+                <td><%= product.title %></td>
+                <td>
+                    <% if (product.author.isAdmin) { %>
+                        Scamazon
+                    <% } else { %> 
+                        <%=product.author.username%>
+                    <% } %>
+                </td>
+                <td><%= product.quantity %></td>
+                <td><%= product.price %></td>
+            </tr>
+        <% } %> 
+    </tbody>
+    
+</table>

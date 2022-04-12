@@ -73,4 +73,7 @@ router.get('/profile', (req, res) => {
 	res.render('users/profile');
 });
 
+router.get('/adminProfile', (req, res) => {
+	res.render('users/adminProfile');
+});
 module.exports = router;
