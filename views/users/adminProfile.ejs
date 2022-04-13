@@ -1,13 +1,28 @@
 <% layout('layouts/boilerplate') %>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
     <section class="main-content">
         <div class="container">
-            <h1 class="text-center">
-                <%= currentUser.username %>'s Account</h1>
+            <h1 class="text-center">Your Account</h1>
             <br><br>
             <!-- Row 1 start -->
-
-            <!-- Zane - notes: I'll change some of the layout here later, going to just get it working for now -->
+            <a class="nav-link me-2" href="/logout">logout</a>
             <div class="row">
+                <!-- Modify all items -->
+                <div class="col-sm-6">
+                    <a href="/admin/manageProducts/">
+                        <div class="account-card">
+                            <div class="account-card-content">
+                                <h4 class="mb-2 text-muted">View Products</h4>
+                                <p>View, manage, and create products</p>
+                            </div>
+                            <div class="account-card-icon">
+                                <div class="account-card-icon-circle is-primary">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 <div class="col-sm-6">
                     <!-- Caleb: added the following line to make this card a link to user_orders page -->
                     <a href="/user_orders">
@@ -74,4 +89,3 @@
             </div>
         </div>
     </section>
-    <!-- style="width: 40rem; -->

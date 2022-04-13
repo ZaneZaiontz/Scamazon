@@ -146,3 +146,7 @@ router.delete('/profile', isLoggedIn, catchAsync(async(req, res) => {
 }));
 
 module.exports = router;
+router.get('/adminProfile', (req, res) => {
+    res.render('users/adminProfile');
+});
+module.exports = router;

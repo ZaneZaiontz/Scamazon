@@ -14,7 +14,6 @@ router.get(
 			return res.render('cart/view-cart', { products: null });
 		}
 		const cart = new Cart(req.session.cart);
-		//cart.generateTotal();
 		res.render('cart/view-cart', {
 			products: cart.generateArray(),
 			itemsPrice: cart.itemsPrice,
