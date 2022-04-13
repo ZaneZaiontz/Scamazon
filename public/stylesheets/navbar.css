@@ -4,6 +4,24 @@
     border-bottom: 4px solid rgba(153, 51, 255, 1);
 }
 
+.nav-link {
+    color: rgb(255, 255, 255) !important;
+}
+
+.circle {
+    background: rgba(153, 51, 255, 1);
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 25px;
+    margin-right: 5px;
+    text-align: center;
+    width: 25px;
+}
+
 #nav_bottom {
     background: rgba(34, 0, 63, 1);
     color: rgb(255, 184, 184);
@@ -19,5 +37,5 @@
 }
 
 #search-bg {
-    color: aqua;
+    color: rgb(255, 255, 255);
 }

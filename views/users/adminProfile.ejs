@@ -1,71 +1,91 @@
 <% layout('layouts/boilerplate') %>
-<link rel="stylesheet" href="/stylesheets/profile.css">
-<section class="main-content">
-    <div class="container">
-        <h1 class="text-center">Your Account</h1>
-        <br><br>
-        <!-- Row 1 start -->
-        <a class="nav-link me-2" href="/logout">logout</a>
-        <div class="row">
-            <!-- Modify all items -->
-            <div class="col-sm-4">
-                <a href="/admin/manageProducts/">
-                    <div class="account-card">
-                        <div class="account-card-content">
-                            <h4 class="mb-2 text-muted">View Products</h4>
-                            <p>View, manage, and create products</p>
-                        </div>
-                        <div class="account-card-icon">
-                            <div class="account-card-icon-circle is-primary">
-                                <i class="fa-solid fa-cart-shopping"></i>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <section class="main-content">
+        <div class="container">
+            <h1 class="text-center">Your Account</h1>
+            <br><br>
+            <!-- Row 1 start -->
+            <a class="nav-link me-2" href="/logout">logout</a>
+            <div class="row">
+                <!-- Modify all items -->
+                <div class="col-sm-6">
+                    <a href="/admin/manageProducts/">
+                        <div class="account-card">
+                            <div class="account-card-content">
+                                <h4 class="mb-2 text-muted">View Products</h4>
+                                <p>View, manage, and create products</p>
+                            </div>
+                            <div class="account-card-icon">
+                                <div class="account-card-icon-circle is-primary">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-                
-            </div>
-            <!-- Modify users -->
-            <div class="col-sm-4">
-                <div class="account-card">
-                    <div class="account-card-content">
-                        <h4 class="mb-2 text-muted">Manage Users</h4>
-                        <p>View and modify current users</p>
-                    </div>
-                    <div class="account-card-icon">
-                        <div class="account-card-icon-circle">
-                            <i class="fa-solid fa-address-card"></i>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-            <!-- Show currently placed orders -->
-            <div class="col-sm-4">
-                <div class="account-card">
-                    <div class="account-card-content">
-                        <h4 class="mb-2 text-muted">View Orders</h4>
-                        <p>View currently placed orders</p>
-                    </div>
-                    <div class="account-card-icon">
-                        <div class="account-card-icon-circle">
-                            <i class="fa-solid fa-list"></i>
+                <div class="col-sm-6">
+                    <!-- Caleb: added the following line to make this card a link to user_orders page -->
+                    <a href="/user_orders">
+                        <div class="account-card">
+                            <div class="account-card-content">
+                                <h4 class="mb-2 text-muted">Your Orders</h4>
+                                <p>Track, return, or buy things again</p>
+                            </div>
+                            <div class="account-card-icon">
+                                <div class="account-card-icon-circle is-primary">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-            <!-- View history of orders -->
-            <div class="col-sm-4">
-                <div class="account-card">
-                    <div class="account-card-content">
-                        <h4 class="mb-2 text-muted">Order History</h4>
-                        <p>View order history</p>
-                    </div>
-                    <div class="account-card-icon">
-                        <div class="account-card-icon-circle">
-                            <i class="fa-solid fa-clipboard"></i>
+                <div class="col-sm-6">
+                    <!-- Caleb: added the following line to make this card a link to user_products page -->
+                    <a href="/user_products">
+                        <div class="account-card">
+                            <div class="account-card-content">
+                                <h4 class="mb-2 text-muted">Your Products</h4>
+                                <p>View and manage your products</p>
+                            </div>
+                            <div class="account-card-icon">
+                                <div class="account-card-icon-circle">
+                                    <i class="fa-solid fa-list"></i>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <!-- Caleb: added the following line to make this card a link to a manage_profile page -->
+                    <a href="/manage_profile">
+                        <div class="account-card">
+                            <div class="account-card-content">
+                                <h4 class="mb-2 text-muted">Your Profiles</h4>
+                                <p>Manage your profile</p>
+                            </div>
+                            <div class="account-card-icon">
+                                <div class="account-card-icon-circle">
+                                    <i class="fa-solid fa-address-card"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <a href="/logout">
+                        <div class="account-card">
+                            <div class="account-card-content">
+                                <h4 class="mb-2 text-muted text-align: left;">Logout</h4>
+                                <p>Logout of your account</p>
+                            </div>
+                            <div class="account-card-icon">
+                                <div class="account-card-icon-circle">
+                                    <i class="fa-solid fa-address-card"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
