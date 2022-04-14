@@ -16,7 +16,8 @@ const productRoutes = require('./routes/product_route');
 const userRoutes = require('./routes/user_route');
 // 4/8 - added cart route
 const cartRoutes = require('./routes/cart_route');
-
+// 4/12 - addded admin route
+const adminRoutes = require('./routes/admin_route');
 /* Error Handler requirements */
 const ExpressError = require('./utils/ExpressError');
 const catchAsync = require('./utils/catchAsync');
@@ -81,6 +82,7 @@ app.use((req, res, next) => {
 app.use('/', userRoutes);
 app.use('/products', productRoutes);
 app.use('/cart', cartRoutes);
+app.use('/admin', adminRoutes);
 /* #### BEGIN ROUTE DEFINITIONS #### */
 //home page route
 app.get('/', catchAsync(async (req, res) => {
