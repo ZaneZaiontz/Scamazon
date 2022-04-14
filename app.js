@@ -9,6 +9,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user_model');
+const Product = require('./models/product_model');
 
 /* Routes requirements */
 const productRoutes = require('./routes/product_route');
@@ -18,6 +19,7 @@ const cartRoutes = require('./routes/cart_route');
 
 /* Error Handler requirements */
 const ExpressError = require('./utils/ExpressError');
+const catchAsync = require('./utils/catchAsync');
 
 /* Connect to mongDB */
 /* 3/29 - changed DB name to ScamazonDB */
@@ -81,10 +83,11 @@ app.use('/products', productRoutes);
 app.use('/cart', cartRoutes);
 /* #### BEGIN ROUTE DEFINITIONS #### */
 //home page route
-app.get('/', (req, res) => {
+app.get('/', catchAsync(async (req, res) => {
 	//res.render('index_test');
-	res.render('home');
-});
+	const products = await Product.find({});
+	res.render('home', {products});
+}));
 /* #### END ROUTE DEFINITIONS #### */
 
 /* Begin Error Handlers */
