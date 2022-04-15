@@ -17,7 +17,7 @@
 					</div>
                 </div>
             </div> <!-- end table title -->
-            <table class="table table-striped table-hover">
+            <table class="table table-stripe table-hover">
                 <thead>
                     <tr>
                         <th>
@@ -167,6 +167,22 @@
     </div>
 </div>
 <script>
+    var checkbox = document.querySelector('table tbody input[type="checkbox"]');
+    var checkboxes = document.getElementsByName('options[]');
+    var selectAll = document.getElementById('selectAll');
+    function check(checked) {
+        for(let i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = checked;
+            }
+    }
+    selectAll.addEventListener('click', function() {
+        if(this.checked) {
+            check(true);
+        } else {
+            check(false); 
+        }
+
+    });
 
     function editModalInputs(x) {
         var editModal = document.getElementById('editProductModal');
