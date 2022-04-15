@@ -89,7 +89,7 @@ app.get('/', catchAsync(async (req, res) => {
 	//res.render('index_test');
 
 	// for displaying 3 random products on home page
-	const products = await Product.aggregate([{$sample:{size:3}}]);
+	const products = await Product.aggregate([{$sample:{size:7}}]);
 	res.render('home', {products});
 }));
 /* #### END ROUTE DEFINITIONS #### */
