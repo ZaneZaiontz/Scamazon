@@ -87,7 +87,9 @@ app.use('/admin', adminRoutes);
 //home page route
 app.get('/', catchAsync(async (req, res) => {
 	//res.render('index_test');
-	const products = await Product.find({});
+
+	// for displaying 3 random products on home page
+	const products = await Product.aggregate([{$sample:{size:3}}]);
 	res.render('home', {products});
 }));
 /* #### END ROUTE DEFINITIONS #### */
