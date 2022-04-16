@@ -1,0 +1,229 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/adminBackend.css">
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2>Manage <b>Products</b></h2>
+					</div>
+                    <div class="col-sm-6">
+						<a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            <span>Add New Product</span>
+                        </a>
+					</div>
+                </div>
+            </div> <!-- end table title -->
+            <table class="table table-stripe table-hover" id="manageProductsTable">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>Title</th>
+                        <th>Seller</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let product of products) { %>
+                        <tr>
+                            <td>
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                    <label for="checkbox1"></label>
+                                </span>
+                            </td>
+                            <td><%= product.title %></td>
+                            <td>
+                                <% if (product.author.isAdmin) { %>
+                                    Scamazon
+                                <% } else { %> 
+                                    <%=product.author.username%>
+                                <% } %>
+                            </td>
+                            <td><%= product.quantity %></td>
+                            <td>$<%= product.price %></td>
+                            <td>
+                                <a href="#editProductModal" class="edit" id="editProduct" data-bs-toggle="modal" data-bs-target="#editProductModal"
+                                    data-id="<%= product._id %>" data-title="<%= product.title %>" data-price="<%= product.price %>" data-quantity="<%= product.quantity %>" 
+                                    data-description="<%= product.description %>" data-image="<%= product.image %>" 
+                                    data-discount="<%= product.discount %>" onclick="editProductModalInputs(this);">
+                                    <i class="fa-solid fa-pencil" data-toggle="tooltip" title="Edit"></i>
+                                </a>
+                                <a href="#deleteProductModal" class="delete" data-bs-toggle="modal" data-bs-target="#deleteProductModal" 
+                                    data-id="<%= product._id %>" onclick="deleteProductModalInputs(this)">
+                                    <i class="fa-solid fa-trash-can" data-toggle="tooltip" title="Delete"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table> <!-- end table -->
+        </div> <!-- end table wrapper -->
+    </div> <!-- end table responsive -->
+</div> <!-- end container xl -->
+
+<!-- Add Modal HTML -->
+<div class="modal fade" id="addProductModal" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/admin" method="POST" novalidate class="validated-form">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="addProductModalLabel">Add Product</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                </div> <!-- end modal-header -->
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Title</label>
+                        <input class="form-control" type="text" id="title" name="product[title]" required>
+                    </div> <!-- end title -->
+                    <div class="mb-3">
+                        <label class="form-label" for="price">Product Price</label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="price-label">$</span>
+                            <input class="form-control" type="text" id="price" placeholder="0.00" aria-label="price"
+                                aria-describedby="price-label" name="product[price]" required>
+                        </div>
+                    </div> <!-- end price -->
+                    <div class="mb-3">
+                        <label class="form-label" for="quantity">Product Quantity</label>
+                        <input class="form-control" type="text" id="quantity" name="product[quantity]" required>
+                    </div> <!-- end quantity -->
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea class="form-control" type="text" id="description" name="product[description]" required></textarea>
+                    </div> <!-- end description -->
+                    <div class="mb-3">
+                        <label class="form-label" for="image">Image URL</label>
+                        <input class="form-control" type="text" id="image" name="product[image]" required>
+                    </div> <!-- end image -->
+                    <div class="mb-3">
+                        <label class="form-label" for="discountCode">Discount Code</label>
+                        <input class="form-control text-uppercase" type="text" id="discountCode" name="product[discountCode]">
+                    </div> <!-- end discount -->
+                </div> <!-- end modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Add Product</button>
+                </div> <!-- end modal-footer -->
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit Modal HTML -->
+<div class="modal fade" id="editProductModal" aria-labelledby="editProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="editModalForm" method="POST" novalidate class="validated-form">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="editProductModalLabel">Edit Product</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                </div> <!-- end modal-header -->
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Title</label>
+                        <input class="form-control" type="text" id="title" name="product[title]" required>
+                    </div> <!-- end title -->
+                    <div class="mb-3">
+                        <label class="form-label" for="price">Product Price</label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="price-label">$</span>
+                            <input class="form-control" type="text" id="price" placeholder="0.00" aria-label="price"
+                                aria-describedby="price-label" name="product[price]" required>
+                        </div>  
+                    </div> <!-- end price -->
+                    <div class="mb-3">
+                        <label class="form-label" for="quantity">Product Quantity</label>
+                        <input class="form-control" type="text" id="quantity" name="product[quantity]" required>
+                    </div> <!-- end quantity -->
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea class="form-control" type="text" id="description" 
+                            name="product[description]" required></textarea>
+                    </div> <!-- end description -->
+                    <div class="mb-3">
+                        <label class="form-label" for="image">Image URL</label>
+                        <input class="form-control" type="text" id="image" name="product[image]" required>
+                    </div> <!-- end image -->
+                    <div class="mb-3">
+                        <label class="form-label" for="discountCode">Discount Code</label>
+                        <input class="form-control text-uppercase" type="text" id="discountCode" name="product[discountCode]">
+                    </div> <!-- end discount -->
+                </div> <!-- end modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-info">Save</button>
+                </div> <!-- end modal-footer -->
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Delete Modal HTML -->
+<div class="modal fade" id="deleteProductModal" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="deleteModalForm" method="POST">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="deleteProductModalLabel">Delete Product</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                </div> <!-- end modal-header -->
+                <div class="modal-body">					
+					<p>Are you sure you want to delete these Records?</p>
+					<p class="text-warning"><small>This action cannot be undone.</small></p>
+				</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div> <!-- end modal-footer -->
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var checkbox = document.querySelector('table tbody input[type="checkbox"]');
+    var checkboxes = document.getElementsByName('options[]');
+    var selectAll = document.getElementById('selectAll');
+    function check(checked) {
+        for(let i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = checked;
+            }
+    }
+    selectAll.addEventListener('click', function() {
+        if(this.checked) {
+            check(true);
+        } else {
+            check(false); 
+        }
+
+    });
+    function deleteProductModalInputs(x) {
+        var deleteModal = document.getElementById('deleteProductModal');
+        var deleteModalForm = deleteModal.querySelector('#deleteModalForm');
+        deleteModalForm.action = "/admin/deleteProduct/" + x.dataset.id +"?_method=DELETE";
+    }
+    function editProductModalInputs(x) {
+        var editModal = document.getElementById('editProductModal');
+        var editModalForm = editModal.querySelector('#editModalForm');
+        var editModalTitle = editModal.querySelector('.modal-body #title');
+        var editModalPrice = editModal.querySelector('.modal-body #price');
+        var editModalQuantity = editModal.querySelector('.modal-body #quantity');
+        var editModalDesc = editModal.querySelector('.modal-body #description');
+        var editModalImg = editModal.querySelector('.modal-body #image');
+        var editModalDisc = editModal.querySelector('.modal-body #discountCode');
+        editModalForm.action = "/admin/updateProduct/" + x.dataset.id + "?_method=PUT";
+        editModalTitle.value = x.dataset.title
+        editModalPrice.value = x.dataset.price;
+        editModalQuantity.value = x.dataset.quantity;
+        editModalDesc.value = x.dataset.description;
+        editModalImg.value = x.dataset.image;
+        editModalDisc.value = x.dataset.discount;
+    }
+ </script>
