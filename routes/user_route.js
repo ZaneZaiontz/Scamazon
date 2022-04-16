@@ -83,11 +83,10 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-    // if (req.user.isAdmin === false)
-    // 	res.render('users/profile');
-    // else
-    // 	res.redirect('/admin_tools');
-    res.render('users/profile');
+    if (req.user.isAdmin === false)
+    	res.render('users/profile');
+    else
+    	res.redirect('/adminProfile');
 });
 
 // Caleb: GET request to render the manage_profile page
@@ -140,7 +139,9 @@ router.get('/user_products', catchAsync(async(req, res) => {
 router.get('/user_orders', (req, res) => {
     res.render('users/user_orders');
 });
+
 // Caleb: GET request to render the admin_tools page
+// admin_tools page is replaced by adminProfile
 router.get('/admin_tools', (req, res) => {
     if (req.user.isAdmin === true) {
         User.find({}).exec(function(err, users) {
