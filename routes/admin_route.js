@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const Product = require('../models/product_model');
+const User = require('../models/user_model');
 const { isLoggedIn, isAuthor, validateProduct } = require('../middleware');
 
 /* manage products route */
@@ -29,7 +30,7 @@ router.post(
 
 /* Update product route */
 router.put(
-	'/:id',
+	'/updateProduct/:id',
 	isLoggedIn,
 	isAuthor,
 	validateProduct, //Call to validate updated data
@@ -42,7 +43,7 @@ router.put(
 );
 /* Delete product route */
 router.delete(
-	'/:id',
+	'/deleteProduct/:id',
 	isLoggedIn,
 	isAuthor,
 	catchAsync(async (req, res) => {
@@ -53,4 +54,36 @@ router.delete(
 	})
 );
 
+/* Modify users route */
+router.get(
+	'/manageUsers',
+	catchAsync(async (req, res) => {
+		const users = await User.find({});
+		res.render('admin/manageUsers', { users });
+	})
+);
+
+/* Update user route */
+router.put(
+	'/updateUser/:id',
+	isLoggedIn,
+	catchAsync(async (req, res) => {
+		const { id } = req.params;
+		await User.findByIdAndUpdate(id, { ...req.body.user });
+		req.flash('success', 'Successfully updated user!');
+		res.redirect('/admin/manageUsers');
+	})
+);
+
+/* Delete user route */
+router.delete(
+	'/deleteUser/:id',
+	isLoggedIn,
+	catchAsync(async (req, res) => {
+		const { id } = req.params;
+		await User.findByIdAndDelete(id);
+		req.flash('success', 'Successfully deleted user');
+		res.redirect('/admin/manageUsers');
+	})
+);
 module.exports = router;

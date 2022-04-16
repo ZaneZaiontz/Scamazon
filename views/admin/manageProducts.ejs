@@ -16,7 +16,7 @@
 					</div>
                 </div>
             </div> <!-- end table title -->
-            <table class="table table-stripe table-hover">
+            <table class="table table-stripe table-hover" id="manageProductsTable">
                 <thead>
                     <tr>
                         <th>
@@ -55,11 +55,11 @@
                                 <a href="#editProductModal" class="edit" id="editProduct" data-bs-toggle="modal" data-bs-target="#editProductModal"
                                     data-id="<%= product._id %>" data-title="<%= product.title %>" data-price="<%= product.price %>" data-quantity="<%= product.quantity %>" 
                                     data-description="<%= product.description %>" data-image="<%= product.image %>" 
-                                    data-discount="<%= product.discount %>" onclick="editModalInputs(this);">
+                                    data-discount="<%= product.discount %>" onclick="editProductModalInputs(this);">
                                     <i class="fa-solid fa-pencil" data-toggle="tooltip" title="Edit"></i>
                                 </a>
                                 <a href="#deleteProductModal" class="delete" data-bs-toggle="modal" data-bs-target="#deleteProductModal" 
-                                    data-id="<%= product._id %>" onclick="deleteModalInputs(this)">
+                                    data-id="<%= product._id %>" onclick="deleteProductModalInputs(this)">
                                     <i class="fa-solid fa-trash-can" data-toggle="tooltip" title="Delete"></i>
                                 </a>
                             </td>
@@ -204,12 +204,12 @@
         }
 
     });
-    function deleteModalInputs(x) {
+    function deleteProductModalInputs(x) {
         var deleteModal = document.getElementById('deleteProductModal');
         var deleteModalForm = deleteModal.querySelector('#deleteModalForm');
-        deleteModalForm.action = "/admin/" + x.dataset.id +"?_method=DELETE";
+        deleteModalForm.action = "/admin/deleteProduct/" + x.dataset.id +"?_method=DELETE";
     }
-    function editModalInputs(x) {
+    function editProductModalInputs(x) {
         var editModal = document.getElementById('editProductModal');
         var editModalForm = editModal.querySelector('#editModalForm');
         var editModalTitle = editModal.querySelector('.modal-body #title');
@@ -218,7 +218,7 @@
         var editModalDesc = editModal.querySelector('.modal-body #description');
         var editModalImg = editModal.querySelector('.modal-body #image');
         var editModalDisc = editModal.querySelector('.modal-body #discountCode');
-        editModalForm.action = "/admin/" + x.dataset.id + "?_method=PUT";
+        editModalForm.action = "/admin/updateProduct/" + x.dataset.id + "?_method=PUT";
         editModalTitle.value = x.dataset.title
         editModalPrice.value = x.dataset.price;
         editModalQuantity.value = x.dataset.quantity;

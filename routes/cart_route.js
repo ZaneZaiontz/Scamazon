@@ -80,6 +80,10 @@ router.get(
 
 /* Checkout */
 router.get('/checkout', (req, res) => {
-	res.render('cart/checkout');
+	const cart = new Cart(req.session.cart);
+	res.render('cart/checkout', {
+		itemsPrice: cart.itemsPrice,
+		totalPrice: cart.generateTotal()
+	});
 });
 module.exports = router;

@@ -72,14 +72,13 @@ table.table thead tr th, table.table tr td{
 	vertical-align: middle;
 }
 
-table.table tr th:first-child {
+#manageProductsTable tr th:first-child {
 	width: 60px;
 }
-table.table tr th:last-child {
+#manageProductsTable tr th:last-child {
 	width: 100px;
 }
 table.table-stripe tbody tr:nth-of-type(odd) {
-	/* background-color: #fcfcfc; */
 	background-color: #fcfcfc;
 }
 table.table-stripe.table-hover tbody tr:hover {
@@ -122,8 +121,11 @@ table.table td i {
 	font-size: 19px;
 }
 
-
-/* Custom Checkbox */
+/* 
+############# 
+checkbox
+############# 
+*/
 .custom-checkbox {
 	position: relative;
 }
@@ -174,8 +176,13 @@ table.table td i {
 	box-shadow: none;
 	background: #ddd;
 }
-/* Modal styles */
-#deleteProductModal .modal-dialog {
+
+/* 
+############# 
+modal
+############# 
+*/
+#deleteProductModal .modal-dialog, #deleteUserModal .modal-dialog{
 	max-width: 400px;
 }
 

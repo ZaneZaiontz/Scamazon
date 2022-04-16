@@ -1,9 +1,10 @@
 <% layout('layouts/boilerplate') %> 
+<link rel="stylesheet" href="/stylesheets/cart.css">
 <div class="row">
     <div class="col-9">
-        <div class="container">
+        <div class="container" id="contactInfo">
             <div class="contact-title">Contact Info</div>
-            <form class="row g-3">
+            <form class="row g-3 mt-1">
                 <div class="col-md-6">
                   <label for="inputEmail4" class="form-label">First Name</label>
                   <input type="text" class="form-control">
@@ -32,9 +33,6 @@
                   <label for="inputZip" class="form-label">Zip</label>
                   <input type="text" class="form-control" id="inputZip">
                 </div>
-                <div class="d-grid gap-2 col-6">
-                    <button class="btn btn-primary" type="submit">Complete Order</button>
-                </div>
               </form>
         </div>
     </div> <!-- end col -->
@@ -50,12 +48,16 @@
                         <p>Using Scamazon:</p>
                     </div>
                     <div>
-                        <p>$56</p>
+                        <p>$<%= itemsPrice %> </p>
                         <p>$50</p>
                         <p>$25</p>
                         <p>$100</p>
                     </div>
                 </div>
+                <div class="mt-2 d-grid gap-1">
+                  <h4>Total: $<%= totalPrice %></h4>
+                  <a href="#" class="btn btn-warning">Complete Order</a>
+              </div>
             </div>       
         </div>
     </div> <!-- end col -->
