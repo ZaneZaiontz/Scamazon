@@ -14,7 +14,6 @@ router.get(
 			return res.render('cart/view-cart', { products: null });
 		}
 		const cart = new Cart(req.session.cart);
-		//cart.generateTotal();
 		res.render('cart/view-cart', {
 			products: cart.generateArray(),
 			itemsPrice: cart.itemsPrice,
@@ -81,6 +80,10 @@ router.get(
 
 /* Checkout */
 router.get('/checkout', (req, res) => {
-	res.render('cart/checkout');
+	const cart = new Cart(req.session.cart);
+	res.render('cart/checkout', {
+		itemsPrice: cart.itemsPrice,
+		totalPrice: cart.generateTotal()
+	});
 });
 module.exports = router;

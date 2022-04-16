@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.shopping-cart {
+.shopping-cart, #contactInfo {
     background-color: white;
     border-radius: 10px;
     padding: 15px 25px;
@@ -40,7 +40,7 @@ form input {
     text-transform: none;
 }
 
-.title {
+.title, .contact-title{
     height: 60px;
     border-bottom: 1px solid #E1E8EE;
     padding: 20px 30px;

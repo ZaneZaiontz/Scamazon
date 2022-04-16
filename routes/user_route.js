@@ -83,38 +83,54 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-    // if (req.user.isAdmin === false)
-    // 	res.render('users/profile');
-    // else
-    // 	res.redirect('/admin_tools');
-    res.render('users/profile');
+    if (req.user.isAdmin === false)
+    	res.render('users/profile');
+    else
+    	res.redirect('/adminProfile');
 });
-
-
 
 // Caleb: GET request to render the manage_profile page
 router.get('/manage_profile', catchAsync(async(req, res) => {
 
-    const { id } = req.params;
     const user = await User.findById(req.user.id);
 
     res.render('users/manage_profile', { user });
 }));
-
+// Caleb: update username
 router.put('/manage_profile', isLoggedIn, catchAsync(async(req, res) => {
 
-    const { id } = req.params;
-    //const user = await User.findByIdAndUpdate(id, { ...req.body.user});
     const user = await User.findByIdAndUpdate(req.user._id, {...req.body.user });
 
     req.flash('success', 'Successfully updated user information! Log back in view changes.');
     res.redirect('/');
 }));
 
+// Caleb: renders the change password page and sends the user information to the page
+router.get('/change_password', catchAsync(async(req, res) => {
+
+    const user = await User.findById(req.user.id);
+
+    res.render('users/change_password', {user});
+}));
+// Caleb: finds the current user and verifies the old password - if correct, changes password
+router.put('/change_password', isLoggedIn, catchAsync(async(req, res) => {
+
+    const user = await User.findById(req.user.id);
+
+    user.changePassword(req.body.old, req.body.new, function(err, user){
+        if (err){
+            req.flash('error', 'Incorrect old password');
+            res.redirect('/change_password');
+        } else {
+            req.flash('success', 'Successfully changed your password!');
+            res.redirect('/profile');
+        }
+    }); 
+}));
 
 
 // Caleb: GET request to render the user_products page
-//user_products page will display each product they sell
+// user_products page will display each product they sell
 router.get('/user_products', catchAsync(async(req, res) => {
     const products = await Product.find({ author: req.user._id });
     res.render('users/user_products', { products });
@@ -123,7 +139,9 @@ router.get('/user_products', catchAsync(async(req, res) => {
 router.get('/user_orders', (req, res) => {
     res.render('users/user_orders');
 });
+
 // Caleb: GET request to render the admin_tools page
+// admin_tools page is replaced by adminProfile
 router.get('/admin_tools', (req, res) => {
     if (req.user.isAdmin === true) {
         User.find({}).exec(function(err, users) {
@@ -141,8 +159,13 @@ router.get('/admin_tools', (req, res) => {
 router.delete('/profile', isLoggedIn, catchAsync(async(req, res) => {
 
     const user = await User.findByIdAndDelete(req.user.id);
+    
     req.flash('success', 'You deleted your account');
     res.redirect('/');
 }));
 
+module.exports = router;
+router.get('/adminProfile', (req, res) => {
+    res.render('users/adminProfile');
+});
 module.exports = router;

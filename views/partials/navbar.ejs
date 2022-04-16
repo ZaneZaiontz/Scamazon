@@ -1,42 +1,48 @@
 <link rel="stylesheet" href="/stylesheets/navbar.css" />
-<nav class="navbar navbar-expand-lg" id="nav_top">
-    <div class="container-fluid px-3">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <a class="navbar-brand mt-2 mt-lg-0" href="/">
-                <img class="navbar-brand" src="/images/white_logo.png" alt="HomePage" width="125" height="50" class="d-inline-block align-text-top">
-            </a>
-        </div>
+<nav class="navbar sticky-top navbar-expand-lg" id="nav_top">
+    <div class="container-fluid">
 
-        <form class="mx-2 my-auto d-inline w-100">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" id="cust-search-bar">
-                <span class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="search_button">Search</button>
-                </span>
+         <a class="navbar-brand" href="/">
+            <img class="navbar-brand" src="/images/white_logo.png" alt="HomePage" width="125" height="50" class="d-inline-block align-text-top">
+         </a>
+         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/products">Products</a>
             </div>
+         </div>
+         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <form class="container-fluid">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" id="cust-search-bar">
+                    <button class="btn btn-outline-secondary" type="button" id="search_button">Search</button>
+                </div>
+            </form>
+         </div>
 
-        </form>
-        <div class="navbar-nav ms-auto">
-            <% if(!currentUser) { %>
-                <a class="nav-link me-2" href="/login"><img src="/images/loginFinal.svg" height="45" alt=""></a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+                <% if(!currentUser) { %>
+                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/register">Register</a>
                 <% } else { %>
-                    <a class="nav-link me-2 my-3" href="/profile"><img src="/images/finalProfile.svg" height="45" alt=""></a>
-                    <% } %>
-                        <a class="nav-link" href="/cart">
-                            <% if(session.cart) {%>
-                                <i class="fa-solid fa-cart-shopping fa-2xl" aria-hidden="true" style="position: absolute;"> <span class="badge"></span></i>
-                                <span class="circle mx-4"><%= session.cart.totalQty %> </span>
-                                <% } else { %>
-                                    <i class="fa-solid fa-cart-shopping fa-2xl" aria-hidden="true"> <span class="badge"></span></i>
-                                    <% } %>
-                        </a>
+                    <% if(currentUser.isAdmin) { %>
+                        <a class="nav-link" href="/adminProfile">Admin Dashboard</a>
+                    <% } else { %> 
+                        <a class="nav-link" href="/profile">Profile</a>                
+                    <% } %> 
+                    <a class="nav-link" href="/logout">Logout</a>
+                <% } %> 
+                <a class="nav-link" href="/cart">
+                    <i class="fa-solid fa-cart-shopping fa-lg" aria-hidden="true"></i>
+                    
+                        <% if(session.cart) {%>
+                            <span class="position-absolute translate-middle badge rounded-pill bg-danger">
+                                <%= session.cart.totalQty %>
+                            </span>
+                            
+                        <% } %>          
+                </a>
+            </div>
         </div>
-    </div>
-</nav>
-<nav class="navbar navbar-expand-lg" id="nav_bottom">
-    <div class="container">
-        <a class="nav-link" href="/products" style="padding: 0rem 0rem;">
-            products
-        </a>
     </div>
 </nav>

@@ -1,4 +1,4 @@
-#nav_top {
+#nav_top, footer {
     background: rgba(34, 0, 63, 1);
     color: rgb(255, 184, 184);
 }
@@ -28,16 +28,8 @@
     width: 25px;
 }
 
-#nav_bottom {
-    border-top: 2px solid rgba(153, 51, 255, 1);
-    background: rgba(34, 0, 63, 1);
-    color: rgb(255, 184, 184);
-    padding-bottom: 4px;
-    height: 30px !important;
-}
-
 #search_button {
-    color: rgba(153, 51, 255, 1);
+    color: white;
 }
 
 #cust-search-bar {
