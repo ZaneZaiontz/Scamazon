@@ -86,6 +86,12 @@ form input {
     transition: background-color 200ms ease-in-out;
 }
 
+.item-cart-resize {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
 .delete-btn:hover i {
     color: #e1f1ff;
 }

@@ -1,6 +1,7 @@
 <% layout('layouts/boilerplate') %>
 
-<p>users can edit their profile info here</p>
+<link rel="stylesheet" href="/stylesheets/profileManage.css">
+<!-- <p>users can edit their profile info here</p>
 <h4>Your username: <%= user.username %> </h4>
 
 <form action="/manage_profile?_method=PUT" method="POST">
@@ -9,9 +10,77 @@
         value="<%=currentUser.username%>" required>
     <button class="btn btn-info">update</button>
 </form>
+
 <a href="/change_password">change password</a>
 
 <form action="/profile?_method=DELETE" method="POST">
     <button> delete account </button>
-</form>
-
+</form> -->
+<h1 class="text-center mt-4">
+    Account settings
+</h1>
+<div class="container justify-content-center align-items-center mt-5">
+    <div class="row">
+        <div class="col-md-4 col-xl-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Change username</h5>
+                    <form action="/manage_profile?_method=PUT" method="POST">
+                        <div class="mb-3">
+                            <label>Enter new username</label>
+                            <input class="form-control" type="text" id="username" name="user[username]"
+                                value="<%=currentUser.username%>" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success btn-login" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xl-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Change password</h5>
+                    <!-- Zane: below wont work 100% correctly beacuse it's not hooked up right -->
+                    <form action="/change_password?_method=PUT" method="POST">
+                        <div>
+                            <label>Confirm your username</label>
+                            <input class="form-control" value="<%=user.username%>" type="text" id="username" name="username">
+                        </div>
+                        <div>
+                            <label>old password</label>
+                            <input class="form-control" type="password" id="oldpassword" name="old">
+                        </div>
+                        <div>
+                            <label>new password</label>
+                            <input class="form-control" type="password" id="newpassword" name="new">
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success btn-login mt-2" type="submit">Change password</button>
+                        </div>
+                    </form>
+                    <!-- Zane: Keeping this here, we can either have the view change for the password, or just change it here -->
+                    <a href="/change_password">change password</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xl-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Delete account</h5>
+                    <form action="/profile?_method=DELETE" method="POST">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success btn-login" type="submit" style="background-color:crimson">Delete Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="container bottom-box">
+        &nbsp;
+    </div>
+</div>

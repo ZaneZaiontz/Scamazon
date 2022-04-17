@@ -1,3 +1,12 @@
 body {
     background-color: #f2f2f2;
 }
+
+#add-to-cart {
+    background-color: #035397;
+    color: white;
+}
+
+#add-to-cart:hover {
+    background-color: #2f83d1;
+}
