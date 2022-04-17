@@ -1,3 +1,21 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap'); */
+nav {
+    font-family: 'Poppins', sans-serif !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+}
+
+.btn {
+    background-color: #035397;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #2f83d1;
+}
+
 #nav_top, footer {
     background: rgba(34, 0, 63, 1);
     color: rgb(255, 184, 184);
@@ -5,6 +23,15 @@
 
 .nav-link {
     color: rgb(255, 255, 255) !important;
+}
+
+.navbar {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 400;
+    padding-top: 0rem;
+    /* This causes the navbar to be larger than 75px in some pages, so just use max-height */
+    /* height: 75px; */
+    max-height: 75px;
 }
 
 .circle {
@@ -27,6 +54,9 @@
 
 #cust-search-bar {
     border-radius: 2px;
+    /* height: 40px;
+    width: 20%; */
+    position: relative;
 }
 
 #search-bg {
