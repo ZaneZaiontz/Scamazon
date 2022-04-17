@@ -120,7 +120,7 @@ router.put('/change_password', isLoggedIn, catchAsync(async(req, res) => {
     user.changePassword(req.body.old, req.body.new, function(err, user){
         if (err){
             req.flash('error', 'Incorrect old password');
-            res.redirect('/change_password');
+            res.redirect('/manage_profile');
         } else {
             req.flash('success', 'Successfully changed your password!');
             res.redirect('/profile');
