@@ -33,14 +33,12 @@
                     <a class="nav-link" href="/logout">Logout</a>
                 <% } %> 
                 <a class="nav-link" href="/cart">
-                    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-                    
-                        <% if(session.cart) {%>
-                            <span class="position-absolute translate-middle badge rounded-pill bg-danger">
-                                <%= session.cart.totalQty %>
-                            </span>
-                            
-                        <% } %>          
+                    <i class="fa-solid fa-cart-shopping fa-lg" aria-hidden="true"></i>
+                    <% if(session.cart) {%>
+                        <span class="position-absolute translate-middle badge rounded-pill bg-danger">
+                            <%= session.cart.totalQty %>
+                        </span>
+                <% } %>          
                 </a>
             </div>
         </div>

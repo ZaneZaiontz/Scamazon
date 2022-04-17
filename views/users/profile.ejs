@@ -1,13 +1,12 @@
+<link rel="stylesheet" href="/stylesheets/profile.css" />
+
 <% layout('layouts/boilerplate') %>
     <section class="main-content">
         <div class="container">
             <h1 class="text-center">
                 <%= currentUser.username %>'s Account</h1>
-            <br><br>
             <!-- Row 1 start -->
-
-            <!-- Zane - notes: I'll change some of the layout here later, going to just get it working for now -->
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-sm-6">
                     <!-- Caleb: added the following line to make this card a link to user_orders page -->
                     <a href="/user_orders">

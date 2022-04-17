@@ -1,28 +1,28 @@
+<link rel="stylesheet" href="/stylesheets/itemPage.css" />
+
 <% layout('layouts/boilerplate') %>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-6 offset-3">
-                <div class="card mb-3">
+            <h4>Item</h4>
+        </div>
+        <div class="row">
+            <div class="col-1">
+
+            </div>
+            <div class="col-4">
+                <div class="card" style="width: 35rem; background-color: white;">
                     <img src="<%=product.image%>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%=product.title%>
-                        </h5>
-                        <p class="card-text">
-                            <%=product.description%>
-                        </p>
-                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card-body" style="background-color: white;">
+                    <h5 class="card-title">
+                        <%=product.title%>
+                    </h5>
+                    <p class="card-text">
+                        <%=product.description%>
+                    </p>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">$
-                            <%=product.price%>
-                        </li>
-                        <li class="list-group-item">
-                            <%=product.quantity%> in stock</li>
-                        <!-- added 'add to cart' button -->
-                        <li class="list-group-item">
-                            <a class="btn btn-success" href="/cart/add-to-cart/<%= product._id %>">Add to cart</a>
-                        </li>
-                        <!-- 3/29 - Display the author of the product -->
                         <li class="list-group-item text-muted">Sold by
                             <% if (product.author.isAdmin) { %>
                                 Scamazon
@@ -44,6 +44,24 @@
                                 <a href="/products">All Products</a>
                             </div>
                 </div>
+            </div>
+            <div class="col-3">
+                <div class="card mb-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">$
+                            <%=product.price%>
+                        </li>
+                        <li class="list-group-item">
+                            <%=product.quantity%> in stock</li>
+                        <!-- added 'add to cart' button -->
+                        <li class="list-group-item">
+                            <a class="btn btn-success" id="add-to-cart" href="/cart/add-to-cart/<%= product._id %>">Add to cart</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-1">
+
             </div>
         </div>
     </div>
