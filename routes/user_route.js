@@ -107,10 +107,17 @@ router.get('/manage_profile', catchAsync(async(req, res) => {
 // Caleb: update username
 router.put('/manage_profile', isLoggedIn, catchAsync(async(req, res) => {
 
-    const user = await User.findByIdAndUpdate(req.user._id, {...req.body.user });
+    if (!req.body.newusername.match("^[a-zA-z]{5,15}$")) {
+        req.flash('error', 'Invalid Username');
+        res.redirect('/manage_profile');
+        return;
+    } else {
 
-    req.flash('success', 'Successfully updated user information! Log back in view changes.');
-    res.redirect('/');
+        const user = await User.findByIdAndUpdate(req.user._id, {$set:{"username":req.body.newusername}});
+
+        req.flash('success', 'Successfully updated user information! Log back in view changes.');
+        res.redirect('/');
+    }
 }));
 
 // Caleb: renders the change password page and sends the user information to the page
