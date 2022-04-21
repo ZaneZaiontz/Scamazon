@@ -1,8 +1,10 @@
 <% layout('layouts/boilerplate') %>
     <link rel="stylesheet" href="/stylesheets/products.css">
     <!-- <div class="container"> -->
-    <h1 class="text-center mt-4">All Products</h1>
-
+    <div class="row">
+        <h1 class="text-center top-box">
+            All Products
+    </div>
     <div class="row mt-5">
         <div class="col-md-2">
             <div class="card mb-3">
@@ -23,7 +25,14 @@
                                 <h5 class="card-title">
                                     <%= product.title %>
                                 </h5>
-                                <p class="card-text">
+                                <p 
+                                    class="card-text" 
+                                    style=" width: 70%;
+                                            height: 6em;
+                                            white-space: normal;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis"
+                                >
                                     <%= product.description %>
                                 </p>
                                 <p class="card-text">$
