@@ -23,6 +23,23 @@ router.get(
 	})
 );
 
+
+//products page route: will display all products
+// router.get(
+// 	'/',
+// 	catchAsync(async (req, res) => {
+// 		var sort = req.query.sort;
+// 		var sortOrder = 
+// 			sort === "1" ? {price: -1}
+// 			: sort === "2" ? {price: 1}
+// 			: sort === "3" ? {quantity: -1}
+// 			: sort === "4" ? {quantity: 1}
+// 			: {};
+// 		const products = await Product.find({}).sort(sortOrder);
+// 		res.render('products/index', { products });
+// 	})
+// );
+
 //search products route: will display the product as customer types in 
 
 
