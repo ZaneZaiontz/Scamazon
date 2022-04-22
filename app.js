@@ -29,6 +29,7 @@ mongoose.connect('mongodb://localhost:27017/scamazonDB', {
 	useUnifiedTopology: true
 });
 
+
 const db = mongoose.connection;
 //Check if connection is successful
 db.on('error', console.error.bind(console, 'Connection error:'));
@@ -85,13 +86,19 @@ app.use('/cart', cartRoutes);
 app.use('/admin', adminRoutes);
 /* #### BEGIN ROUTE DEFINITIONS #### */
 //home page route
+
+
 app.get('/', catchAsync(async (req, res) => {
 	//res.render('index_test');
+	console.log("query2","Test2" );
 
 	// for displaying 3 random products on home page
 	const products = await Product.aggregate([{$sample:{size:7}}]);
+	console.log("products*****",products);
 	res.render('home', {products});
 }));
+ 
+ /* app.get('/:searchText', productRoutes) */
 /* #### END ROUTE DEFINITIONS #### */
 
 /* Begin Error Handlers */
