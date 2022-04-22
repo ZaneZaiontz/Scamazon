@@ -6,21 +6,26 @@ const catchAsync = require('../utils/catchAsync');
 const { isLoggedIn, isAuthor, validateProduct } = require('../middleware');
 const Product = require('../models/product_model');
 
+console.log("inside product route")
+
 //products page route: will display all products
 router.get(
 	'/',
 	catchAsync(async (req, res) => {
-		var sort = req.query.sort;
-		var sortOrder = 
-			sort === "1" ? {price: -1}
-			: sort === "2" ? {price: 1}
-			: sort === "3" ? {quantity: -1}
-			: sort === "4" ? {quantity: 1}
-			: {};
-		const products = await Product.find({}).sort(sortOrder);
+		let searchText = {};
+		// get search text from Query param and generate mongo query
+		if(req.query.searchText != null || req.query.searchText != undefined) {
+			searchText = {"title": { $regex: new RegExp(req.query.searchText.toLowerCase(), "i") }};
+		}
+		console.log("searchText", searchText);
+		const products = await Product.find(searchText);
 		res.render('products/index', { products });
 	})
 );
+
+//search products route: will display the product as customer types in 
+
+
 
 //new product route: page to create a new product
 /* 3/30 - added isLoggedIn middleware to protect creating a new product*/
