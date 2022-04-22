@@ -2,18 +2,26 @@
     <link rel="stylesheet" href="/stylesheets/products.css">
     <!-- <div class="container"> -->
     <div class="row">
-        <h1 class="text-center top-box">
-            All Products
-    </div>
-    <div class="row mt-5">
-        <div class="col-md-2">
+        <div class="col-xl-12">
+            <h1 class="text-center top-box">
+                All Products
+        </div>
+        <div class="col-md-1 offset-md-8">
             <div class="card mb-3">
                 <div class="row">
-                    Filters go here
+                    <select name="sort" id="sort" onchange="window.location.href='?sort='+ this.value">
+                        <option style="display:none">---Sort---</option>
+                        <option value="1">Price: High to Low</option>
+                        <option value="2">Price: Low to High</option>
+                        <option value="3">Availablilty: High to Low</option>
+                        <option value="4">Availablilty: Low to High</option>
+                    </select>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
             <% for(let product of products) { %>
                 <div class="card mb-3">
                     <div class="row">
