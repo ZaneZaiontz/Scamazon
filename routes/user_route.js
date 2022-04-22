@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user_model');
 const Product = require('../models/product_model');
+const Cart = require('../models/cart_model');
 /* 3/29 - added the following requirements */
 const catchAsync = require('../utils/catchAsync');
 const passport = require('passport');
@@ -158,7 +159,12 @@ router.get('/user_products', catchAsync(async(req, res) => {
 }));
 // Caleb: GET request to render the user_orders page
 router.get('/user_orders', (req, res) => {
-    res.render('users/user_orders');
+    const cart = new Cart(req.session.cart);
+    const orderProducts = cart.generateArray();
+    req.session.cart.items = {};
+    req.session.cart.totalQty = 0;
+    req.session.cart.itemsPrice = 0;
+    res.render('users/user_orders', {orderProducts});
 });
 
 // Caleb: GET request to render the admin_tools page
