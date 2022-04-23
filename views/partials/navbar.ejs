@@ -1,25 +1,30 @@
 <link rel="stylesheet" href="/stylesheets/navbar.css" />
 <nav class="navbar sticky-top navbar-expand-lg" id="nav_top">
-    <div class="container-fluid">
+    <div class="container-fluid" style="background: rgba(34, 0, 63, 1);">
 
          <a class="navbar-brand" href="/">
             <img class="navbar-brand" src="/images/white_logo.png" alt="HomePage" width="125" height="50" class="d-inline-block align-text-top">
          </a>
+
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="background-color: aliceblue;"></span>
+          </button>
+
          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link" href="/products">Products</a>
             </div>
          </div>
+
          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <form class="container-fluid">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" id="cust-search-bar">
-                    <button class="btn btn-outline-secondary" type="button" id="search_button">Search</button>
-                </div>
-            </form>
+            <div class="input-group">
+                <input type="text" class="form-control" name="searchText" placeholder="Search" id="cust-search-bar">
+                <a  class="btn btn-outline-secondary" id="search_button">Search</a>
+            </div>
          </div>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
             <div class="navbar-nav ms-auto">
                 <% if(!currentUser) { %>
                     <a class="nav-link" href="/login">Login</a>
@@ -41,6 +46,8 @@
                 <% } %>          
                 </a>
             </div>
+            
         </div>
+
     </div>
 </nav>

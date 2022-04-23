@@ -8,12 +8,12 @@
     </div>
     <div class="row">
         <div class="col-xl-3 offset-xl-2 col-md-10 offset-md-1">
-            <div class="card" id="item-image">
+            <div class="card mb-4" id="item-image">
                 <img src="<%=product.image%>" class="card-img-top" alt="...">
             </div>
         </div>
         <div class="col-xl-3">
-            <div class="card-body" style="background-color: white;">
+            <div class="card-body mb-4" style="background-color: white;">
                 <h5 class="card-title">
                     <%=product.title%>
                 </h5>
@@ -47,8 +47,7 @@
             <div class="card mb-3">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        $<%=product.price%>
-
+                        $<%=product.price.toFixed(2)%>
                         <p>
                             Order <strong> NOW </strong> and you get <strong>ABSOLUTELY FREE PACKAGING</strong> 
                         </p>
