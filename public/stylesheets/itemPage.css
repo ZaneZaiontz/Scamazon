@@ -1,5 +1,17 @@
-body {
-    background-color: #f2f2f2;
+@media screen and (max-width: 1199px) {
+    #item-title {
+        text-align: center;
+    }
+}
+
+#item-title {
+    
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-height: 75px;
+    background-color: white;
+    /* padding-left: 17%; */
+    padding-top: 10px;
+    margin-bottom: 1%;
 }
 
 #add-to-cart {
@@ -9,4 +21,14 @@ body {
 
 #add-to-cart:hover {
     background-color: #2f83d1;
+}
+
+#item-image {
+    width: 100%; 
+    background-color: rgb(221, 221, 221); 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 5%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }

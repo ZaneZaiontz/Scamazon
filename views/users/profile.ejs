@@ -3,8 +3,10 @@
 <% layout('layouts/boilerplate') %>
     <section class="main-content">
         <div class="container">
-            <h1 class="text-center">
-                <%= currentUser.username %>'s Account</h1>
+            <div class="top-box">
+                <h1 class="text-center">
+                    <%= currentUser.username %>'s Account</h1>
+            </div>
             <!-- Row 1 start -->
             <div class="row mt-5">
                 <div class="col-sm-6">
@@ -44,7 +46,7 @@
                     <a href="/manage_profile">
                         <div class="account-card">
                             <div class="account-card-content">
-                                <h4 class="mb-2 text-muted">Your Profiles</h4>
+                                <h4 class="mb-2 text-muted">Your Profile</h4>
                                 <p>Manage your profile</p>
                             </div>
                             <div class="account-card-icon">

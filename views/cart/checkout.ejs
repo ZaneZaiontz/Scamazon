@@ -46,16 +46,20 @@
                         <p>Existing:</p>
                         <p>Breathing:</p>
                         <p>Using Scamazon:</p>
+                        <p>Tax (8.25%)</p>
+                        <p class="text-muted">hidden fees</p>
                     </div>
                     <div>
-                        <p>$<%= itemsPrice %> </p>
-                        <p>$50</p>
-                        <p>$25</p>
-                        <p>$100</p>
+                        <p>$<%= itemsPrice.toFixed(2) %> </p>
+                        <p>$50.00</p>
+                        <p>$25.00</p>
+                        <p>$100.00</p>
+                        <p>$<%= (itemsPrice * 0.0825).toFixed(2) %> </p>
+                        <p class="text-muted">$50.00</p>
                     </div>
                 </div>
                 <div class="mt-2 d-grid gap-1">
-                  <h4>Total: $<%= totalPrice %></h4>
+                  <h4>Total: $<%= (totalPrice + (itemsPrice * 0.0825) + 50).toFixed(2) %></h4>
                   <a href="/user_orders" class="btn btn-warning">Complete Order</a>
               </div>
             </div>       

@@ -3,8 +3,8 @@
 <% layout('layouts/boilerplate') %>
     <div class="container justify-content-center align-items-center mt-5">
         <div class="row">
-            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
-                <div class="card shadow">
+            <div class="col-10 offset-1">
+                <div class="card shadow" id="profile-size-lock">
                     <div class="card-body">
                         <h5 class="card-title">Sign-in</h5>
                         <form action="/login" method="POST" class="validated-form" novalidate>
@@ -16,7 +16,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="password">Password</label>
                                 <input class="form-control" type="password" id="password" name="password" required>
-                                <a href="#" class="link-primary">Forgot password?</a>
+                                <!-- <a href="#" class="link-primary">Forgot password?</a> -->
                             </div>
                             <!-- end password -->
                             <div class="d-grid gap-2">
@@ -35,8 +35,8 @@
             </div>
         </div>
     </div>
-    <div class="row mt-4">
-        <div class="container bottom-box">
+    <!-- <div class="row mt-4">
+        <div class="container-fluid bottom-box">
             &nbsp;
         </div>
-    </div>
+    </div> -->

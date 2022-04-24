@@ -1,33 +1,50 @@
 <% layout('layouts/boilerplate') %>
     <link rel="stylesheet" href="/stylesheets/products.css">
     <!-- <div class="container"> -->
-    <h1 class="text-center mt-4">All Products</h1>
-
-    <div class="row mt-5">
-        <div class="col-md-2">
-            <div class="card mb-3">
+    <div class="row">
+        <h1 class="text-center top-box">
+            All Products
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 offset-md-2 col-l-1 offset-l-2 col-xl-1 offset-xl-2">
+            <div class="card mb-3" style="min-width: 200px;max-width: 200px;" id="movin">
                 <div class="row">
-                    Filters go here
+                    <select name="sort" id="sort" onchange="CheckURL(this.value)">
+                        <option style="display:none">Sort by:</option>
+                        <option value="1">Price: High to Low</option>
+                        <option value="2">Price: Low to High</option>
+                        <option value="3">Availablilty: High to Low</option>
+                        <option value="4">Availablilty: Low to High</option>
+                    </select>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+    </div>
+    <div class="row mt-5">
+        <div class="col-lg-10 offset-lg-1 col-xs-10 offset-xs-2">
             <% for(let product of products) { %>
                 <div class="card mb-3">
                     <div class="row">
-                        <div class="col-md-3">
-                            <img src="<%= product.image %>" class="img-fluid display-items" alt="">
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <img src="<%= product.image %>" class="img-fluid display-items" alt="" style="background-color: white;">
                         </div>
-                        <div class="col-md-6">
-                            <div class="card-body">
+                        <div class="col-lx-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="card-body text-c">
                                 <h5 class="card-title">
                                     <%= product.title %>
                                 </h5>
-                                <p class="card-text">
+                                <p 
+                                    class="card-text" 
+                                    style=" width: 100%;
+                                            height: 6em;
+                                            white-space: normal;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis"
+                                >
                                     <%= product.description %>
                                 </p>
                                 <p class="card-text">$
-                                    <%= product.price %>
+                                    <%= product.price.toFixed(2) %>
                                 </p>
                                 <p class="card-text">
                                     <small class="text-muted">Quantity: <%= product.quantity %></small>
@@ -43,11 +60,39 @@
                 </div>
             <% }%>
         </div>
-        <div class="col-md-2">
+        <!-- <div class="col-md-2">
             <div class="card mb-3">
                 <div class="row text-center">
                     <a href="/products/new">Add Product</a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
+
+    <script type="text/javascript">
+        function CheckURL(sortCode) {
+            
+            // variable to check if sort variable exists
+            let test = location.search;
+            let params = new URLSearchParams(test);
+            let sortParam = parseInt(params.get("sort"));
+
+            // variable to hold search value
+            let searchVar = location.search;
+            let splicedSearchVar = searchVar.split("&")[0];
+
+            // variable to check if search value exists
+            let testSearch = location.search.slice(1).split("&")[0].split("=")[0];
+            
+            // all cases for how the URL should change based off current search/sort values.
+            if (!sortParam && !testSearch) {
+                window.location.href="?sort=" + sortCode;
+            } else if (sortParam && (testSearch != "searchText")) {
+                window.location.href="?sort=" + sortCode;
+            } else if (!sortParam && (testSearch === "searchText")) {
+                window.location.href+="&sort=" + sortCode;
+            } else if (sortParam && (testSearch === "searchText")) {
+                window.location.href= splicedSearchVar + "&sort=" + sortCode;
+            }
+        }
+    </script>

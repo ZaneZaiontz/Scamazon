@@ -13,7 +13,7 @@
                     <div class="input-group">
                         <span class="input-group-text" id="price-label">$</span>
                         <input class="form-control" type="text" id="price" placeholder="0.00" aria-label="price"
-                            aria-describedby="price-label" name="product[price]" value="<%=product.price%>" required>
+                            aria-describedby="price-label" name="product[price]" value="<%=product.price.toFixed(2)%>" required>
                     </div>       
                 </div> <!-- end price -->
                 <div class="mb-3">
