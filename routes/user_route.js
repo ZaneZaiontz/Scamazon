@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user_model');
 const Product = require('../models/product_model');
+const Cart = require('../models/cart_model');
 /* 3/29 - added the following requirements */
 const catchAsync = require('../utils/catchAsync');
 const passport = require('passport');
@@ -33,6 +34,14 @@ router.post(
                 return;
             }
 
+            // password must be at least 8 characters long
+            // and contain at least 1 uppercase or 1 lowercase, 1 special character and 1 digit
+            if (!password.match("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?@]).*$")){
+                req.flash('error', 'Password must contain at least 1 lowercase or 1 uppercase, 1 digit, 1 special character, and be at least 8 characters long');
+                res.redirect('/register');
+                return;
+            }
+
             const user = new User({ username });
             /* 3/29 */
             //Check if the admin code field matches the admin code
@@ -45,7 +54,7 @@ router.post(
             req.login(registeredUser, (err) => {
                 if (err) return next(err);
                 req.flash('success', 'Welcome to Scamazon!');
-                res.redirect('/products');
+                res.redirect('/profile');
             });
         } catch (e) {
             req.flash('error', e.message);
@@ -99,23 +108,36 @@ router.get('/manage_profile', catchAsync(async(req, res) => {
 // Caleb: update username
 router.put('/manage_profile', isLoggedIn, catchAsync(async(req, res) => {
 
-    const user = await User.findByIdAndUpdate(req.user._id, {...req.body.user });
+    if (!req.body.newusername.match("^[a-zA-z]{5,15}$")) {
+        req.flash('error', 'Invalid Username');
+        res.redirect('/manage_profile');
+        return;
+    } else {
 
-    req.flash('success', 'Successfully updated user information! Log back in view changes.');
-    res.redirect('/');
+        const user = await User.findByIdAndUpdate(req.user._id, {$set:{"username":req.body.newusername}});
+
+        req.flash('success', 'Successfully updated user information! Log back in view changes.');
+        res.redirect('/');
+    }
 }));
 
 // Caleb: renders the change password page and sends the user information to the page
-router.get('/change_password', catchAsync(async(req, res) => {
+// router.get('/change_password', catchAsync(async(req, res) => {
 
-    const user = await User.findById(req.user.id);
+//     const user = await User.findById(req.user.id);
 
-    res.render('users/change_password', {user});
-}));
+//     res.render('users/change_password', {user});
+// }));
 // Caleb: finds the current user and verifies the old password - if correct, changes password
 router.put('/change_password', isLoggedIn, catchAsync(async(req, res) => {
 
     const user = await User.findById(req.user.id);
+
+    if (!req.body.new.match("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?@]).*$")){
+        req.flash('error', 'Password must contain at least 1 lowercase or 1 uppercase, 1 digit, 1 special character, and be at least 8 characters long');
+        res.redirect('/manage_profile');
+        return;
+    }
 
     user.changePassword(req.body.old, req.body.new, function(err, user){
         if (err){
@@ -137,7 +159,12 @@ router.get('/user_products', catchAsync(async(req, res) => {
 }));
 // Caleb: GET request to render the user_orders page
 router.get('/user_orders', (req, res) => {
-    res.render('users/user_orders');
+    const cart = new Cart(req.session.cart);
+    const orderProducts = cart.generateArray();
+    req.session.cart.items = {};
+    req.session.cart.totalQty = 0;
+    req.session.cart.itemsPrice = 0;
+    res.render('users/user_orders', {orderProducts});
 });
 
 // Caleb: GET request to render the admin_tools page
