@@ -20,16 +20,16 @@
                                 </div>
                             </div>
                             <!-- Image -->
-                            <div class="col-4">
+                            <div class="col-3">
                                 <img class="img-fluid item-cart-resize" src="<%= product.item.image %>" alt="" />
                             </div>
                             <!-- Description -->
-                            <div class="col-4">
+                            <div class="col-3">
                                 <!-- Title -->
                                 <p class="product-title">
                                     <%= product.item.title %>
                                 </p>
-                                <span>$<%= product.item.price %> </span>
+                                <span>$<%= product.item.price.toFixed(2) %> </span>
                                 <br>
                                 <span class="text-muted">Sold By 
                                     <% if (product.item.author.isAdmin) { %>
@@ -50,8 +50,8 @@
                                 </a>
                             </div>
                             
-                            <div class="col-1 align-self-center">
-                                <span class="price">$<%= product.price %></span>
+                            <div class="col-3 align-self-center text-end">
+                                <span class="price">$<%= product.price.toFixed(2) %></span>
                             </div>
                         </div>
                     <% } %> <!-- end loop -->
@@ -69,10 +69,10 @@
                                 <p>Using Scamazon:</p>
                             </div>
                             <div>
-                                <p>$<%= itemsPrice %> </p>
-                                <p>$50</p>
-                                <p>$25</p>
-                                <p>$100</p>
+                                <p>$<%= itemsPrice.toFixed(2) %> </p>
+                                <p>$50.00</p>
+                                <p>$25.00</p>
+                                <p>$100.00</p>
                             </div>
                         </div>
                         <form class="row g-1" action="#">
@@ -85,7 +85,7 @@
                             </div>
                         </form>
                         <div class="mt-2 d-grid gap-1">
-                            <h4>Total: $<%= totalPrice %></h4>
+                            <h4>Total: $<%= totalPrice.toFixed(2) %></h4>
                             <!-- <button class="btn btn-warning" type="button">Checkout</button> -->
                             <a href="/cart/checkout" class="btn btn-warning">Checkout</a>
                         </div>
@@ -95,5 +95,19 @@
         </div>
     </section>
 <% } else { %> 
-    <h1>No products</h1>
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-9">
+                <div class="shopping-cart">
+                    <!-- Title -->
+                    <div class="title">
+                        <span>Shopping Cart</span>
+                    </div>
+                    <h1 class="text-muted">No products</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
 <% } %> 

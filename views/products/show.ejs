@@ -1,67 +1,64 @@
 <link rel="stylesheet" href="/stylesheets/itemPage.css" />
 
 <% layout('layouts/boilerplate') %>
-    <div class="container-fluid">
-        <div class="row">
-            <h4>Item</h4>
+    <div class="row" id="item-title">
+        <div class="col-xl-10 offset-xl-2 col-md-10 offset-md-1" >
+            <h1> <%=product.title%> </h1>
         </div>
-        <div class="row">
-            <div class="col-1">
-
+    </div>
+    <div class="row">
+        <div class="col-xl-3 offset-xl-2 col-md-10 offset-md-1">
+            <div class="card mb-4" id="item-image">
+                <img src="<%=product.image%>" class="card-img-top" alt="...">
             </div>
-            <div class="col-4">
-                <div class="card" style="width: 35rem; background-color: white;">
-                    <img src="<%=product.image%>" class="card-img-top" alt="...">
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card-body" style="background-color: white;">
-                    <h5 class="card-title">
-                        <%=product.title%>
-                    </h5>
-                    <p class="card-text">
-                        <%=product.description%>
-                    </p>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-muted">Sold by
-                            <% if (product.author.isAdmin) { %>
-                                Scamazon
-                                <% } else { %>
-                                    <%=product.author.username%>
-                                        <% } %>
-                        </li>
-                    </ul>
-                    <!-- 3/30 - will show/hide buttons if there is a user logged in and the user is the author or an admin -->
-                    <% if(currentUser && product.author.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
-                        <div class="card-body">
-                            <a class="card-link btn btn-info" href="/products/<%= product._id %>/edit">Edit</a>
-                            <form class="d-inline" action="/products/<%= product._id %>?_method=DELETE" method="POST">
-                                <button class="btn btn-danger">Delete</button>
-                            </form>
-                        </div>
+        </div>
+        <div class="col-xl-3">
+            <div class="card-body mb-4" style="background-color: white;">
+                <h5 class="card-title">
+                    <%=product.title%>
+                </h5>
+                <p class="card-text">
+                    <%=product.description%>
+                </p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-muted">Sold by
+                        <% if (product.author.isAdmin) { %>
+                            Scamazon
+                        <% } else { %>
+                            <%=product.author.username%>
                         <% } %>
-                            <div class="card-footer text-muted">
-                                <a href="/products">All Products</a>
-                            </div>
-                </div>
+                    </li>
+                </ul>
+                <!-- 3/30 - will show/hide buttons if there is a user logged in and the user is the author or an admin -->
+                <% if(currentUser && product.author.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                    <div class="card-body">
+                        <a class="card-link btn btn-info" href="/products/<%= product._id %>/edit">Edit</a>
+                        <form class="d-inline" action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger" style="background-color: red;">Delete</button>
+                        </form>
+                    </div>
+                <% } %>
+                <div class="card-footer text-muted">
+                    <a href="/products">All Products</a>
+                </div>    
             </div>
-            <div class="col-3">
-                <div class="card mb-3">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">$
-                            <%=product.price%>
-                        </li>
-                        <li class="list-group-item">
-                            <%=product.quantity%> in stock</li>
-                        <!-- added 'add to cart' button -->
-                        <li class="list-group-item">
-                            <a class="btn btn-success" id="add-to-cart" href="/cart/add-to-cart/<%= product._id %>">Add to cart</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-1">
-
+        </div>
+        <div class="col-xl-2">
+            <div class="card mb-3">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        $<%=product.price.toFixed(2)%>
+                        <p>
+                            Order <strong> NOW </strong> and you get <strong>ABSOLUTELY FREE PACKAGING</strong> 
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <%=product.quantity%> left in stock</li>
+                    <!-- added 'add to cart' button -->
+                    <li class="list-group-item">
+                        <a class="btn btn-success" id="add-to-cart" href="/cart/add-to-cart/<%= product._id %>">Add to cart</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

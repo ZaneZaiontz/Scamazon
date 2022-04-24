@@ -6,6 +6,8 @@ const catchAsync = require('../utils/catchAsync');
 const { isLoggedIn, isAuthor, validateProduct } = require('../middleware');
 const Product = require('../models/product_model');
 
+console.log("inside product route")
+
 //products page route: will display all products
 router.get(
 	'/',
@@ -27,6 +29,10 @@ router.get(
 		res.render('products/index', { products });	
 	})
 );
+
+//search products route: will display the product as customer types in 
+
+
 
 //new product route: page to create a new product
 /* 3/30 - added isLoggedIn middleware to protect creating a new product*/
