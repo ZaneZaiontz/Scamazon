@@ -65,6 +65,14 @@ a {
     padding-bottom: 20px;
 }
 
+#profile-size-lock {
+    min-width: 200px; 
+    max-width: 500px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block;
+}
+
 .account-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
