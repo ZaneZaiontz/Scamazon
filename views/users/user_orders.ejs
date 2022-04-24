@@ -1,3 +1,7 @@
 <% layout('layouts/boilerplate') %>
 
-<p>users can view their orders here</p>
+<% for(let thing of orderProducts) { %>
+    <%= thing.item.title %> <br>
+    <%= thing.item.image %> <br>
+    <%= thing.item.price %> <br> <br>
+<% } %>

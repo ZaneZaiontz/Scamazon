@@ -45,8 +45,8 @@
 
 		}
 		// Creating url to  get the product data as per the search 
-		let url = 'http://localhost:3000/products?searchText=';
-		window.location.href = url +searchText;
+		//let url = 'http://localhost:3000/products?searchText=';
+		window.location.href ='/products?searchText=' +searchText;
 	});
 
 	// $('#sortMe').change(function(){
