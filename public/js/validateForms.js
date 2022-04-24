@@ -49,5 +49,8 @@
 		window.location.href = url +searchText;
 	});
 
-
-	
+	// $('#sortMe').change(function(){
+	// 	let sortMe = $("#sortMe").val();
+	// 	console.log(sortMe);
+	// 	window.location.href = 'http://localhost:3000/products?searchText=' + sortMe;
+	// });

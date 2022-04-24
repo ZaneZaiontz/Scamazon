@@ -39,13 +39,20 @@ a {
 }
 
 .bottom-box {
-
     background-size: cover; 
     /* background: #f2f2f2; */
     height: 100%;
     margin-bottom: 3%;
     /* background: linear-gradient(to bottom, #f2f2f2, rgb(255, 255, 255)); */
 } 
+
+.carousel-item:active #main-background {
+    background: linear-gradient(to bottom, #359421 75%, #f2f2f2) !important;
+}
+
+#main-background {
+    background: linear-gradient(to bottom, #035397 75%, #af1919);
+}
 
 .account-card {
     background: #fff;
