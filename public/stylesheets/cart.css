@@ -13,7 +13,7 @@
     display: flex;
     margin-right: 5em;
     flex-direction: column;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
 }
 
