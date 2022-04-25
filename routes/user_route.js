@@ -133,7 +133,7 @@ router.put('/change_password', isLoggedIn, catchAsync(async(req, res) => {
 
     const user = await User.findById(req.user.id);
 
-    if (!req.body.new.match("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?@]).*$")){
+    if (!req.body.new.match("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!#$%&?@]).*$")){
         req.flash('error', 'Password must contain at least 1 lowercase or 1 uppercase, 1 digit, 1 special character, and be at least 8 characters long');
         res.redirect('/manage_profile');
         return;

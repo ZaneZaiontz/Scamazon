@@ -32,3 +32,13 @@
     margin-top: 5%;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
+
+.charges {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.charges p {
+    margin-bottom: 2px;
+}

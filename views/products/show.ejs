@@ -47,16 +47,52 @@
             <div class="card mb-3">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        $<%=product.price.toFixed(2)%>
-                        <p>
-                            Order <strong> NOW </strong> and you get <strong>ABSOLUTELY FREE PACKAGING</strong> 
-                        </p>
+                        <div class="charges">
+                            <div>
+                                <p>Item Price:</p>
+                                <p>Est. Tax (8.25%)</p>
+                            </div>
+                            <div>
+                                <p>$<%= product.price.toFixed(2) %> </p>
+                                <p>$<%= (product.price * 0.0825).toFixed(2) %> </p>
+                            </div>
                     </li>
                     <li class="list-group-item">
-                        <%=product.quantity%> left in stock</li>
-                    <!-- added 'add to cart' button -->
+                        <div>
+                            <p style="padding-left: 5px; padding-top: 5px;">
+                                Order <strong> NOW </strong> and get <strong>ABSOLUTELY "FREE" PACKAGING</strong> 
+                            </p>
+                        </div>
+                    </li>
                     <li class="list-group-item">
-                        <a class="btn btn-success" id="add-to-cart" href="/cart/add-to-cart/<%= product._id %>">Add to cart</a>
+                        <% if (product.quantity > 0) {%>
+                            <h5 style="color: green; text-decoration: solid;">In Stock</h5>
+                            <%=product.quantity%> left in stock
+                            <a class="btn btn-success" style="width: 100%; margin-top: 5px;" id="add-to-cart" href="/cart/add-to-cart/<%= product._id %>">Add to cart</a>
+                        <% } else { %>
+                            <h5 style="color: rgb(172, 33, 33); text-decoration: solid;">Out Of Stock</h5>
+                            <%=product.quantity%> left in stock
+                            <button type="btn" style="width: 100%; margin-top: 5px;" class="btn btn-secondary btn-lg" disabled>Out Of Stock</a>
+                        <% } %>
+                    </li>
+                    <!-- added 'add to cart' button -->
+
+                        
+           
+                    <li class="list-group-item">
+                        <h4 style="color: rgb(0, 0, 0); text-decoration: solid;">Return Policy</h5>
+                        <p style="font-size: xx-small;">
+                            "touch grass" is not an insult towards gamers, rather it is advice for them. 
+                            When participating in intense periods of gaming, the human hand has a tendency to get sweaty. 
+                            The sweat causes the hand to become slick, and it b becomes more difficult to retain a grip on the 
+                            gamers gaming mouse, thus making it more difficult to perform well in intense gaming moments. 
+                            By touching grass with the gamers hand, the grass will impart a layer of particulate onto the gamers 
+                            hand, the particulate can be made of a variety of dusts, dirts and other natural matter. 
+                            This particulate will then act in a similar form to climbers chalk, absorbing the sweat and drying 
+                            out the gamers hand. With dry hands, the gamer can now perform to their maximum when gaming. 
+                            This is why when an enemy or teammate tells you to touch grass, they are simply trying to assist 
+                            you in performing better.
+                        </p>
                     </li>
                 </ul>
             </div>
