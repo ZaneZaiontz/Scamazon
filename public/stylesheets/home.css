@@ -24,14 +24,23 @@ body {
     object-fit: cover;
 }
 
+.card-body {
+    padding-left: 1rem;
+    padding-top: 0rem;
+}
+
+.price-font {
+    font-size: small !important;
+}
+
 .item-images {
     width: 250px;
-    height: 250px;
+    height: 200px;
     object-fit: cover;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5%;
+    /* margin-top: 5%; */
 }
 
 .item-home-desc,
@@ -45,6 +54,12 @@ body {
     width: 100%; 
     height: 350px;
     background-color: rgb(255, 255, 255);
+}
+
+.card-title-text {
+    font-family:'Tahoma', Arial, sans-serif;
+    text-align: center;
+    font-weight:bold;
 }
 
 .card-text-style {
