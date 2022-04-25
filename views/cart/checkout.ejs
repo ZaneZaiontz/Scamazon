@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-9">
         <div class="container" id="contactInfo">
-            <div class="contact-title">Contact Info</div>
+            <div class="contact-title" style="padding-top: 20px; padding-left: 0px;">Contact Info</div>
             <form class="row g-3 mt-1">
                 <div class="col-md-6">
                   <label for="inputEmail4" class="form-label">First Name</label>
@@ -23,11 +23,12 @@
                   <input type="text" class="form-control" id="inputCity">
                 </div>
                 <div class="col-md-4">
-                  <label for="inputState" class="form-label">State</label>
-                  <select id="inputState" class="form-select">
+                  <label for="inputState" class="form-label">State <span class="text-muted"><em>Example: TX for Texas</em></span> </label>
+                  <input type="text" class="form-control" id="inputCity" maxlength="2">
+                  <!-- <select id="inputState" class="form-select">
                     <option selected>Choose...</option>
                     <option>...</option>
-                  </select>
+                  </select> -->
                 </div>
                 <div class="col-md-2">
                   <label for="inputZip" class="form-label">Zip</label>
