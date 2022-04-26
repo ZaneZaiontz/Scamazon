@@ -1,78 +1,77 @@
 <link rel="stylesheet" href="/stylesheets/profile.css" />
 
 <% layout('layouts/boilerplate') %>
-    <section class="main-content">
-        <div class="container">
-            <div class="top-box">
-                <h1 class="text-center">
-                    <%= currentUser.username %>'s Account</h1>
+<section class="main-content">
+    <div class="container">
+        <div class="top-box">
+            <h1 class="text-center"><%= currentUser.username %>'s Account</h1>
+        </div>
+        <!-- Row 1 start -->
+        <div class="row mt-5">
+            <div class="col-sm-6">
+                <!-- Caleb: added the following line to make this card a link to user_orders page -->
+                <a href="/user_orders">
+                    <div class="account-card">
+                        <div class="account-card-content">
+                            <h4 class="mb-2 text-muted">Your Orders</h4>
+                            <p>Track, return, or buy things again</p>
+                        </div>
+                        <div class="account-card-icon">
+                            <div class="account-card-icon-circle is-primary">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <!-- Row 1 start -->
-            <div class="row mt-5">
-                <div class="col-sm-6">
-                    <!-- Caleb: added the following line to make this card a link to user_orders page -->
-                    <a href="/user_orders">
-                        <div class="account-card">
-                            <div class="account-card-content">
-                                <h4 class="mb-2 text-muted">Your Orders</h4>
-                                <p>Track, return, or buy things again</p>
-                            </div>
-                            <div class="account-card-icon">
-                                <div class="account-card-icon-circle is-primary">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </div>
+            <div class="col-sm-6">
+                <!-- Caleb: added the following line to make this card a link to user_products page -->
+                <a href="/user_products">
+                    <div class="account-card">
+                        <div class="account-card-content">
+                            <h4 class="mb-2 text-muted">Your Products</h4>
+                            <p>View and manage your products</p>
+                        </div>
+                        <div class="account-card-icon">
+                            <div class="account-card-icon-circle">
+                                <i class="fa-solid fa-list"></i>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-sm-6">
-                    <!-- Caleb: added the following line to make this card a link to user_products page -->
-                    <a href="/user_products">
-                        <div class="account-card">
-                            <div class="account-card-content">
-                                <h4 class="mb-2 text-muted">Your Products</h4>
-                                <p>View and manage your products</p>
-                            </div>
-                            <div class="account-card-icon">
-                                <div class="account-card-icon-circle">
-                                    <i class="fa-solid fa-list"></i>
-                                </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6">
+                <!-- Caleb: added the following line to make this card a link to a manage_profile page -->
+                <a href="/manage_profile">
+                    <div class="account-card">
+                        <div class="account-card-content">
+                            <h4 class="mb-2 text-muted">Your Profile</h4>
+                            <p>Manage your profile</p>
+                        </div>
+                        <div class="account-card-icon">
+                            <div class="account-card-icon-circle">
+                                <i class="fa-solid fa-address-card"></i>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-sm-6">
-                    <!-- Caleb: added the following line to make this card a link to a manage_profile page -->
-                    <a href="/manage_profile">
-                        <div class="account-card">
-                            <div class="account-card-content">
-                                <h4 class="mb-2 text-muted">Your Profile</h4>
-                                <p>Manage your profile</p>
-                            </div>
-                            <div class="account-card-icon">
-                                <div class="account-card-icon-circle">
-                                    <i class="fa-solid fa-address-card"></i>
-                                </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6">
+                <a href="/logout">
+                    <div class="account-card">
+                        <div class="account-card-content">
+                            <h4 class="mb-2 text-muted text-align: left;">Logout</h4>
+                            <p>Logout of your account</p>
+                        </div>
+                        <div class="account-card-icon">
+                            <div class="account-card-icon-circle">
+                                <i class="fa-solid fa-address-card"></i>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-sm-6">
-                    <a href="/logout">
-                        <div class="account-card">
-                            <div class="account-card-content">
-                                <h4 class="mb-2 text-muted text-align: left;">Logout</h4>
-                                <p>Logout of your account</p>
-                            </div>
-                            <div class="account-card-icon">
-                                <div class="account-card-icon-circle">
-                                    <i class="fa-solid fa-address-card"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
         </div>
-    </section>
-    <!-- style="width: 40rem; -->
+    </div>
+</section>
+<!-- style="width: 40rem; -->

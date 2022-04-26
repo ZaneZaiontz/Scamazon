@@ -1,117 +1,114 @@
-<% layout('layouts/boilerplate') %> 
-<link rel="stylesheet" href="/stylesheets/cart.css">
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/cart.css" />
 <% if(products) { %>
-    <section class="container-fluid">
-        <div class="row">
-            <div class="col-9">
-                <div class="shopping-cart">
-                    <!-- Title -->
-                    <div class="title">
-                        <span>Shopping Cart</span>
-                    </div>
-                    <% for(let product of products) { %>
-                        <div class="row" id="cart-items">
-                            <!-- Delete button -->
-                            <div class="col-1 align-self-center">
-                                <div class="delete-btn">
-                                    <a href="/cart/remove-item/<%=product.item._id %>">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- Image -->
-                            <div class="col-3">
-                                <img class="img-fluid item-cart-resize" src="<%= product.item.image %>" alt="" />
-                            </div>
-                            <!-- Description -->
-                            <div class="col-3">
-                                <!-- Title -->
-                                <p class="product-title">
-                                    <%= product.item.title %>
-                                </p>
-                                <span>$<%= product.item.price.toFixed(2) %> </span>
-                                <br>
-                                <span class="text-muted">Sold By 
-                                    <% if (product.item.author.isAdmin) { %>
-                                        Scamazon
-                                    <% } else { %>
-                                        <%=product.item.author.username%>      
-                                    <% } %> 
-                                </span>
-                            </div>
-                            <!-- Inc/dec quantity -->
-                            <div class="col-2 align-self-center">
-                                <a class="qty-btn" href="/cart/dec-qty/<%=product.item._id %> ">
-                                    <i class="fa-solid fa-minus"></i>
-                                </a>
-                                <span id="qty-input"><%=product.qty%></span>
-                                <a class="qty-btn" href="/cart/inc-qty/<%=product.item._id %> ">
-                                    <i class="fa-solid fa-plus"></i>
-                                </a>
-                            </div>
-                            
-                            <div class="col-3 align-self-center text-end">
-                                <span class="price">$<%= product.price.toFixed(2) %></span>
-                            </div>
-                        </div>
-                    <% } %> <!-- end loop -->
-                </div> <!-- end shopping-cart -->
-            </div> <!-- end col -->
-            <div class="col-3">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h5 class="card-title checkout-header">Summary</h5>
-                        <div class="charges">
-                            <div>
-                                <p>Item(s):</p>
-                                <p>Existing:</p>
-                                <p>Breathing:</p>
-                                <p>Using Scamazon:</p>
-                                <p>Tax (8.25%)</p>
-                                <p class="text-muted">hidden fees</p>
-                            </div>
-                            <div>
-                                <p>$<%= itemsPrice.toFixed(2) %> </p>
-                                <p>$50.00</p>
-                                <p>$25.00</p>
-                                <p>$100.00</p>
-                                <p>$<%= (itemsPrice * 0.0825).toFixed(2) %> </p>
-                                <p class="text-muted">$50.00</p>
-                            </div>
-                        </div>
-                        <form class="row g-1" action="#">
-                            <div class="col-9">
-                                <label for="promo-code" class="visually-hidden">Apply promo code</label>
-                                <input class="form-control" type="text" id="promo-code" name="promo-code" placeholder="Apply promo code">
-                            </div>
-                            <div class="col-3">
-                                <button type="submit" class="btn btn-primary">Apply</button>
-                            </div>
-                        </form>
-                        <div class="mt-2 d-grid gap-1">
-                            <h4>Total: $<%= (totalPrice + (itemsPrice * 0.0825) + 50).toFixed(2) %></h4>
-                            <!-- <button class="btn btn-warning" type="button">Checkout</button> -->
-                            <a href="/cart/checkout" class="btn btn-warning">Checkout</a>
-                        </div>
-                    </div>       
+<section class="container-fluid cart-section">
+    <div class="row">
+        <div class="col-9">
+            <div class="shopping-cart">
+                <!-- Title -->
+                <div class="title">
+                    <span>Shopping Cart</span>
                 </div>
-            </div> <!-- end col -->
-        </div>
-    </section>
-<% } else { %> 
-    <section class="container-fluid">
-        <div class="row">
-            <div class="col-9">
-                <div class="shopping-cart">
-                    <!-- Title -->
-                    <div class="title">
-                        <span>Shopping Cart</span>
+                <% for(let product of products) { %>
+                <div class="row" id="cart-items">
+                    <!-- Delete button -->
+                    <div class="col-1 align-self-center">
+                        <div class="delete-btn">
+                            <a href="/cart/remove-item/<%=product.item._id %>">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </div>
                     </div>
-                    <h1 class="text-muted">No products</h1>
+                    <!-- Image -->
+                    <div class="col-3">
+                        <img class="img-fluid item-cart-resize" src="<%= product.item.image %>" alt="" />
+                    </div>
+                    <!-- Description -->
+                    <div class="col-3">
+                        <!-- Title -->
+                        <p class="product-title"><%= product.item.title %></p>
+                        <span>$<%= product.item.price.toFixed(2) %> </span>
+                        <br />
+                        <span class="text-muted"
+                            >Sold By <% if (product.item.author.isAdmin) { %> Scamazon <% } else { %> <%=product.item.author.username%> <% } %>
+                        </span>
+                    </div>
+                    <!-- Inc/dec quantity -->
+                    <div class="col-2 align-self-center">
+                        <a class="qty-btn" href="/cart/dec-qty/<%=product.item._id %> ">
+                            <i class="fa-solid fa-minus"></i>
+                        </a>
+                        <span id="qty-input"> <%=product.qty%> </span>
+                        <a class="qty-btn" href="/cart/inc-qty/<%=product.item._id %> ">
+                            <i class="fa-solid fa-plus"></i>
+                        </a>
+                    </div>
+
+                    <div class="col-3 align-self-center text-end">
+                        <span class="price">$<%= product.price.toFixed(2) %></span>
+                    </div>
+                </div>
+                <% } %>
+                <!-- end loop -->
+            </div>
+            <!-- end shopping-cart -->
+        </div>
+        <!-- end col -->
+        <div class="col-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title checkout-header">Summary</h5>
+                    <div class="charges">
+                        <div>
+                            <p>Item(s):</p>
+                            <p>Existing:</p>
+                            <p>Breathing:</p>
+                            <p>Using Scamazon:</p>
+                            <p>Tax (8.25%)</p>
+                            <p class="text-muted">hidden fees</p>
+                        </div>
+                        <div>
+                            <p>$<%= itemsPrice.toFixed(2) %></p>
+                            <p>$50.00</p>
+                            <p>$25.00</p>
+                            <p>$100.00</p>
+                            <p>$<%= (itemsPrice * 0.0825).toFixed(2) %></p>
+                            <p class="text-muted">$50.00</p>
+                        </div>
+                    </div>
+                    <form class="row g-1" action="#">
+                        <div class="col-9">
+                            <label for="promo-code" class="visually-hidden">Apply promo code</label>
+                            <input class="form-control" type="text" id="promo-code" name="promo-code" placeholder="Apply promo code" />
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-primary">Apply</button>
+                        </div>
+                    </form>
+                    <div class="mt-2 d-grid gap-1">
+                        <h4>Total: $<%= totalPrice.toFixed(2) %></h4>
+                        <!-- <button class="btn btn-warning" type="button">Checkout</button> -->
+                        <a href="/cart/checkout" class="btn btn-warning">Checkout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+        <!-- end col -->
+    </div>
+</section>
+<% } else { %>
+<section class="container-fluid no-items">
+    <div class="row">
+        <div class="col-9">
+            <div class="shopping-cart">
+                <!-- Title -->
+                <div class="title">
+                    <span>Shopping Cart</span>
+                </div>
+                <h1 class="text-muted">No products</h1>
+            </div>
+        </div>
+    </div>
+</section>
 
-    
-<% } %> 
+<% } %>

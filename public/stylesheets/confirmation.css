@@ -1,0 +1,35 @@
+.confirm {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+}
+.logo {
+    background-color: rgba(34, 0, 63, 1);
+}
+.logo img {
+    width: 185px;
+    height: 50px;
+    object-fit: cover;
+}
+.cost {
+    font-size: 20px;
+}
+.fees {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+    margin-top: 2px;
+}
+.total {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+.product-qty span {
+    font-size: 14px;
+}
+
+.toBold {
+    font-weight: bold;
+    font-size: 18px;
+}

@@ -1,0 +1,88 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/adminBackend-orders.css" />
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h2>Order Details</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- end table-title -->
+            <div class="table-filter">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <button type="button" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass" onclick="filterValue()"></i></button>
+                        <div class="filter-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                        <div class="filter-group">
+                            <label>Date</label>
+                            <select class="form-select">
+                                <option>Date created (newest)</option>
+                                <option>Date created (oldest)</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Status</label>
+                            <select class="form-select" id="status">
+                                <option value="" selected="selected">Any</option>
+                                <option value="new">New</option>
+                                <option value="Delivered">Delivered</option>
+                                <option value="Shipped">Shipped</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end table-filter -->
+            <table class="table table-striped table-hover" id="orderTable">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer name</th>
+                        <th>Order Date</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let order of orders) { %>
+                    <tr>
+                        <td><%= order._id %></td>
+                        <td><%= order.name %></td>
+                        <td><%= order.createdAt %></td>
+                        <td><%= order.status %></td>
+                        <td>$<%= order.total %></td>
+                        <td>
+                            <a href="#" class="view" title="View Details" data-bs-toggle="tooltip"><i class="fa-regular fa-circle-right"></i></a>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <!-- end table-wrapper -->
+    </div>
+    <!-- end table-responsive -->
+</div>
+<script>
+    function filterValue() {
+        var table = document.getElementById('orderTable'),
+            tr = table.getElementsByTagName('tr'),
+            selected = this.value;
+        for (var i = 1; i < tr.length; i++) {
+            var x = tr[i].cells[0].innerHTML;
+            if (x) {
+                tr[i].style.display = selected == '' || x.indexOf(selected) > -1 ? '' : 'none';
+            }
+        }
+    }
+    window.onload = function () {
+        document.getElementById('status').addEventListener('change', filterValue);
+    };
+</script>

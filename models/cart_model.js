@@ -1,6 +1,8 @@
 const existingCharge = 50;
 const breathingCharge = 25;
 const scamazonCharge = 100;
+const tax = 0.0825;
+const hiddenFee = 50;
 
 module.exports = function Cart(oldCart) {
 	this.items = oldCart.items || {};
@@ -36,8 +38,14 @@ module.exports = function Cart(oldCart) {
 		delete this.items[id];
 	};
 
+	this.feesTotal = function() {
+		var additionalFees = existingCharge + breathingCharge + scamazonCharge + hiddenFee;
+		return additionalFees;
+	};
+
 	this.generateTotal = function() {
-		var totalCost = this.itemsPrice + existingCharge + breathingCharge + scamazonCharge;
+		var totalCost =
+			this.itemsPrice + this.itemsPrice * tax + existingCharge + breathingCharge + scamazonCharge + hiddenFee;
 		return totalCost;
 	};
 

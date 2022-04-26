@@ -6,7 +6,7 @@ const catchAsync = require('../utils/catchAsync');
 const { isLoggedIn, isAuthor, validateProduct } = require('../middleware');
 const Product = require('../models/product_model');
 
-console.log("inside product route")
+console.log('inside product route');
 
 //products page route: will display all products
 router.get(
@@ -14,25 +14,20 @@ router.get(
 	catchAsync(async (req, res) => {
 		var sort = req.query.sort;
 		let searchText = {};
-		var sortOrder = 
-			sort === "1" ? {price: -1}
-			: sort === "2" ? {price: 1}
-			: sort === "3" ? {quantity: -1}
-			: sort === "4" ? {quantity: 1}
-			: {};
+		var sortOrder =
+			sort === '1'
+				? { price: -1 }
+				: sort === '2' ? { price: 1 } : sort === '3' ? { quantity: -1 } : sort === '4' ? { quantity: 1 } : {};
 		// get search text from Query param and generate mongo query
-		if(req.query.searchText != null || req.query.searchText != undefined) {
-			searchText = {"title": { $regex: new RegExp(req.query.searchText.toLowerCase(), "i") }};
+		if (req.query.searchText != null || req.query.searchText != undefined) {
+			searchText = { title: { $regex: new RegExp(req.query.searchText.toLowerCase(), 'i') } };
 		}
-		console.log("searchText", searchText);
 		const products = await Product.find(searchText).sort(sortOrder);
-		res.render('products/index', { products });	
+		res.render('products/index', { products });
 	})
 );
 
-//search products route: will display the product as customer types in 
-
-
+//search products route: will display the product as customer types in
 
 //new product route: page to create a new product
 /* 3/30 - added isLoggedIn middleware to protect creating a new product*/
@@ -48,7 +43,7 @@ router.post(
 	isLoggedIn,
 	validateProduct, //Call to validate the new data
 	catchAsync(async (req, res) => {
-		const product = new Product(req.body.product);
+		const product = new Product(req.body.products);
 		/* 3/30 - associate the new product with the user who created it */
 		product.author = req.user._id;
 		await product.save();

@@ -1,20 +1,22 @@
-.shop-section {
-    background-color: #f2f2f2;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.checkout-section {
+    margin: 15px;
 }
-
-.shopping-cart, #contactInfo {
+.cart-section {
+    margin-top: 10px;
+}
+.no-items {
+    margin: 15px;
+    justify-content: center;
+}
+.shopping-cart,
+#contactInfo {
     background-color: white;
     border-radius: 10px;
     padding: 15px 25px;
     display: flex;
     margin-right: 5em;
     flex-direction: column;
-    /* text-transform: uppercase; */
-    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
 }
 
 .checkout-header {
@@ -31,20 +33,21 @@
 .charges p {
     margin-bottom: 2px;
 }
-
+/* 
 form input {
     text-transform: uppercase;
 }
-
+ */
 ::placeholder {
     text-transform: none;
 }
 
-.title, .contact-title{
+.title,
+.contact-title {
     height: 60px;
-    border-bottom: 1px solid #E1E8EE;
+    border-bottom: 1px solid #e1e8ee;
     padding: 20px 30px;
-    color: #5E6977;
+    color: #5e6977;
     font-size: 18px;
     font-weight: 400;
     display: flex;
@@ -52,7 +55,7 @@ form input {
 }
 
 #cart-items {
-    border-bottom: 1px solid #E1E8EE;
+    border-bottom: 1px solid #e1e8ee;
     padding: 10px 0 10px 0;
 }
 
@@ -61,7 +64,7 @@ form input {
     text-align: center;
     width: 20px;
     font-size: 16px;
-    color: #43484D;
+    color: #43484d;
     font-weight: 400;
     padding: 0 4px;
 }
@@ -76,7 +79,7 @@ form input {
 }
 
 .delete-btn i {
-    color: #86939E;
+    color: #86939e;
 }
 
 .delete-btn:hover,
@@ -103,8 +106,8 @@ form input {
 
 .plus-btn,
 .minus-btn {
-    color: #43484D;
-    background-color: #E1E8EE;
+    color: #43484d;
+    background-color: #e1e8ee;
     display: inline-block;
     padding: 5px 15px;
     text-decoration: none;
@@ -114,8 +117,8 @@ form input {
 }
 
 .qty-btn {
-    color: #43484D;
-    background-color: #E1E8EE;
+    color: #43484d;
+    background-color: #e1e8ee;
     display: inline-block;
     padding: 5px 15px;
     text-decoration: none;
@@ -125,13 +128,12 @@ form input {
 }
 
 .qty-btn:hover {
-    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.20);
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
 .qty-btn:active {
     transform: translateY(2px);
 }
-
 
 /* padding: top right bottom left */
 
@@ -142,6 +144,6 @@ form input {
 
 .price {
     font-size: 18px;
-    color: #43484D;
+    color: #43484d;
     font-weight: bold;
 }

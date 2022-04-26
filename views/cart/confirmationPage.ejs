@@ -1,0 +1,99 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/confirmation.css" />
+<div class="container mt-2 mb-3">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="confirm">
+                <div class="text-left logo p-2 px-5">
+                    <img src="/images/white_logo.png" alt="" />
+                </div>
+                <div class="invoice p-5">
+                    <h5>Order confirmed!</h5>
+                    <span class="font-weight-bold d-block mt-4"> You order has been confirmed and will be shipped in next two days! </span>
+                    <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="py-2">
+                                            <span class="d-block text-muted">Order Date</span>
+                                            <span>12, Jan, 2022</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="py-2">
+                                            <span class="d-block text-muted">Order No.</span>
+                                            <span><%= order.id %> </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="py-2">
+                                            <span class="d-block text-muted">Shiping Address</span>
+                                            <span><%= order.address %> </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end payment -->
+                    <div class="product border-bottom table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <% for(let product of products) { %>
+                                <tr>
+                                    <td width="20%">
+                                        <img src="<%= product.item.image %>" width="100" />
+                                    </td>
+                                    <td width="60%">
+                                        <span class="toBold"> <%= product.item.title %> </span>
+                                        <div class="product-qty">
+                                            <span class="text-muted">Quantity: <%=product.qty%></span>
+                                        </div>
+                                    </td>
+                                    <td width="20%">
+                                        <div class="text-end">
+                                            <span class="toBold"> $<%= product.price.toFixed(2) %> </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end products -->
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-md-5">
+                            <div class="fees border-bottom">
+                                <div>
+                                    <p>Subtotal</p>
+                                    <p>Additional Fees</p>
+                                    <p>Tax</p>
+                                </div>
+                                <div class="text-end">
+                                    <p>$<%= itemsPrice %></p>
+                                    <p>$<%= additionalFees %></p>
+                                    <p>$<%= (itemsPrice * 0.0825).toFixed(2) %></p>
+                                </div>
+                            </div>
+                            <div class="total border-bottom">
+                                <div>
+                                    <span class="toBold">Total</span>
+                                </div>
+                                <div>$<%=totalPrice.toFixed(2) %></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end totals -->
+                    <p class="toBold mb-0">Thanks for shopping with us!</p>
+                    <span>Scamazon</span>
+                </div>
+                <!-- end invoice -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+</div>
+<!-- end container -->

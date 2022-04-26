@@ -1,7 +1,80 @@
 <% layout('layouts/boilerplate') %>
 
-<% for(let thing of orderProducts) { %>
-    <%= thing.item.title %> <br>
-    <%= thing.item.image %> <br>
-    <%= thing.item.price %> <br> <br>
-<% } %>
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="text-left">
+                        <h2>Scamazon</h2>
+                    </div>
+                    <div class="invoice p-5">
+                        <h5>Order confirmed!</h5>
+                        <span class="font-weight-bold d-block mt-4">
+                            You order has been confirmed and will be shipped in next two days!
+                        </span>
+                        <div class="payment table-responsive">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="py-2">
+                                                <span class="d-block text-muted">Order Date</span>
+                                                <span>12, Jan, 2022</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="py-2">
+                                                <span class="d-block text-muted">Order No.</span>
+                                                <span>113423</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="py-2"> <span class="d-block text-muted">Shiping Address</span>
+                                                <span>414 Advert Avenue, NY,USA</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> <!-- end payment -->
+                        <div class="product border-bottom table-responsive">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <% for(let product of products) { %>
+                                        <tr>
+                                            <td width="20%">img
+                                                <img src="<%= product.item.image %>" width=90>
+                                            </td>
+                                            <td width="60%">
+                                                <span class="font-weight-bold">
+                                                    <%= product.item.title %>
+                                                </span>
+                                                <div class="product-qty">
+                                                    <span class="d-block">Quantity: <%=product.qty%></span>
+                                                </div>
+                                            </td>
+                                            <td width="20%">
+                                                <div class="text-right">
+                                                    <span class="font-weight-bold">
+                                                        $<%= product.price.toFixed(2) %>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% for(let thing of orderProducts) { %>
+        <%= thing.item.title %> <br>
+            <%= thing.item.image %> <br>
+                <%= thing.item.price %> <br> <br>
+                    <% } %>
