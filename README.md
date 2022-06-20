@@ -9,3 +9,5 @@ Originally named "Scamazon" and hosted using an Amazon EC2 instance
 - User accounts
 	- Tracking for users orders*
 	-  Manage users profile
+
+![Site Preview](https://github.com/ZaneZaiontz/Swindle/blob/main/public/images/siteSC.png)
