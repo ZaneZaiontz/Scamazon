@@ -41,7 +41,7 @@ router.post(
             const registeredUser = await User.register(user, password);
             req.login(registeredUser, (err) => {
                 if (err) return next(err);
-                req.flash('success', 'Welcome to Scamazon!');
+                req.flash('success', 'Welcome to Swindle!');
                 const redirectUrl = req.session.returnTo || '/profile';
                 //delete redirctURL from the session
                 delete req.session.returnTo;
